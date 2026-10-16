@@ -13,6 +13,8 @@ export type ProjectImage = {
   caption: Localized | null;
 };
 
+export type ProjectLink = { label: Localized; href: string };
+
 export type Project = {
   slug: string;
   /** Boneco de destaque e slot na página inicial */
@@ -24,13 +26,20 @@ export type Project = {
   summary: Localized;
   /** Parágrafos da página do projeto */
   description: { pt: string[]; en: string[] };
-  tags: string[];
+  /** Tecnologias ou ofícios. Use { pt, en } quando os termos mudam com o idioma. */
+  tags: string[] | { pt: string[]; en: string[] };
   /** Prints 16:10 (sugestão: 1600×1000) em /public. O primeiro aparece no slot; vários viram carrossel. Vazio mostra o Placeholder. */
   images: ProjectImage[];
-  /** Link "Visitar o site"; null esconde o botão */
+  /** "screenshot" (padrão): moldura de navegador. "photo": quadro de foto, sem barra de endereço, imagem inteira. */
+  media?: "screenshot" | "photo";
+  /** Link do botão principal; null esconde o botão */
   url: string | null;
+  /** Texto do botão principal; o padrão é "Visitar o site ↗" */
+  urlText?: Localized;
   /** Endereço exibido na barra do navegador */
   urlLabel: string | null;
+  /** Links secundários, ao lado do botão principal (ex.: redes sociais) */
+  links?: ProjectLink[];
 };
 
 export const projects: Project[] = [
@@ -315,27 +324,52 @@ export const projects: Project[] = [
     urlLabel: null,
   },
   {
-    slug: "projeto-pessoal",
+    slug: "capote-valente",
     featured: false,
-    sign: { pt: "Projeto pessoal", en: "Personal project" },
-    title: { pt: "[Projeto pessoal]", en: "[Personal project]" },
+    sign: { pt: "Capote Valente", en: "Capote Valente" },
+    title: { pt: "Capote Valente", en: "Capote Valente" },
     summary: {
-      pt: "[Descrição curta: o problema, o que você construiu e o resultado.]",
-      en: "[Short description: the problem, what you built and the result.]",
+      pt: "Projeto musical em que sou cantor e compositor e colaboro na criação dos arranjos.",
+      en: "A music project where I'm the singer and songwriter, and I help create the arrangements.",
     },
     description: {
-      pt: ["[Descrição curta: o problema, o que você construiu e o resultado.]"],
-      en: ["[Short description: the problem, what you built and the result.]"],
+      pt: ["Capote Valente é o meu projeto musical: sou o cantor e compositor da banda e colaboro na criação dos arranjos."],
+      en: ["Capote Valente is my music project: I'm the band's singer and songwriter, and I help create the arrangements."],
     },
-    tags: [],
-    images: [],
-    url: null,
+    tags: { pt: ["Voz", "Composição", "Arranjos"], en: ["Vocals", "Songwriting", "Arrangements"] },
+    media: "photo",
+    images: [
+      {
+        src: "/images/projects/capote-valente-1.png",
+        alt: {
+          pt: "Marcello cantando ao microfone, em foto preto e branco",
+          en: "Marcello singing into the microphone, in a black-and-white photo",
+        },
+        caption: { pt: "Ao vivo, na voz.", en: "Live, on vocals." },
+      },
+      {
+        src: "/images/projects/capote-valente-2.png",
+        alt: {
+          pt: "A banda Capote Valente tocando num palco com luz vermelha",
+          en: "The band Capote Valente playing on a stage under red light",
+        },
+        caption: { pt: "A banda no palco.", en: "The band on stage." },
+      },
+    ],
+    url: "https://open.spotify.com/artist/3XcjwrdxNP7U0eZuSxOySU",
+    urlText: { pt: "Ouvir no Spotify ↗", en: "Listen on Spotify ↗" },
     urlLabel: null,
+    links: [{ label: { pt: "Instagram ↗", en: "Instagram ↗" }, href: "https://www.instagram.com/capotevalentesp/" }],
   },
 ];
 
 export function getProject(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug);
+}
+
+/** Tags no idioma da página. */
+export function projectTags(project: Project, lang: "pt" | "en"): string[] {
+  return Array.isArray(project.tags) ? project.tags : project.tags[lang];
 }
 
 /** Número do trabalho (1, 2, 3…), pela posição na lista. */

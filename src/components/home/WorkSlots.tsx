@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import Placeholder from "@/components/Placeholder";
-import { featuredProjects, projectNumber } from "@/content/projects";
+import { featuredProjects, projectNumber, projectTags } from "@/content/projects";
 import { fill, pad, type Dictionary, type Lang } from "@/i18n";
 
 // Cor do slot selecionado, pela posição (01 sky, 02 ochre, 03 olive).
@@ -51,8 +51,10 @@ export default function WorkSlots({ lang, dict }: { lang: Lang; dict: Dictionary
                     <Placeholder label={dict.work.imagePlaceholder} className="aspect-[16/10]" />
                   )}
                   <span className="block text-[16px] leading-[1.55]">{project.summary[lang]}</span>
-                  {project.tags.length > 0 && (
-                    <span className="block text-[13px] tracking-[0.06em] uppercase">{project.tags.join(" · ")}</span>
+                  {projectTags(project, lang).length > 0 && (
+                    <span className="block text-[13px] tracking-[0.06em] uppercase">
+                      {projectTags(project, lang).join(" · ")}
+                    </span>
                   )}
                 </span>
               )}
@@ -63,7 +65,7 @@ export default function WorkSlots({ lang, dict }: { lang: Lang; dict: Dictionary
       <div className="flex flex-wrap justify-end gap-x-10 gap-y-3 px-8 py-5 text-[15px] font-semibold">
         {current.url && (
           <a href={current.url} target="_blank" rel="noopener noreferrer">
-            {dict.project.visit}
+            {current.urlText?.[lang] ?? dict.project.visit}
           </a>
         )}
         <Link href={`/${lang}/projetos/${current.slug}`}>

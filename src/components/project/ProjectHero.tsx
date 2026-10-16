@@ -1,12 +1,15 @@
 import { ViewTransition } from "react";
 import AvatarFigure from "@/components/AvatarFigure";
-import type { Project } from "@/content/projects";
+import { projectTags, type Project } from "@/content/projects";
 import { pad, type Dictionary, type Lang } from "@/i18n";
 import ProjectShot from "./ProjectShot";
 
 type ProjectHeroProps = { project: Project; index: number; lang: Lang; dict: Dictionary };
 
 export default function ProjectHero({ project, index, lang, dict }: ProjectHeroProps) {
+  const tags = projectTags(project, lang);
+  const links = project.links ?? [];
+
   return (
     <main className="flex flex-wrap border-b-2 border-ink">
       <div className="flex flex-[1_1_400px] flex-col gap-7 px-8 py-12">
@@ -30,18 +33,31 @@ export default function ProjectHero({ project, index, lang, dict }: ProjectHeroP
             </p>
           ))}
         </div>
-        {project.tags.length > 0 && (
-          <p className="rise2 m-0 text-[13px] tracking-[0.08em] uppercase">{project.tags.join(" · ")}</p>
-        )}
-        {project.url && (
-          <a
-            href={project.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="visit rise3 inline-flex min-h-14 items-center gap-2.5 self-start border-2 border-ink bg-ink px-7 text-[16px] font-semibold text-paper no-underline"
-          >
-            {dict.project.visit}
-          </a>
+        {tags.length > 0 && <p className="rise2 m-0 text-[13px] tracking-[0.08em] uppercase">{tags.join(" · ")}</p>}
+        {(project.url || links.length > 0) && (
+          <div className="rise3 flex flex-wrap gap-4">
+            {project.url && (
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="visit inline-flex min-h-14 items-center gap-2.5 border-2 border-ink bg-ink px-7 text-[16px] font-semibold text-paper no-underline"
+              >
+                {project.urlText?.[lang] ?? dict.project.visit}
+              </a>
+            )}
+            {links.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="visit inline-flex min-h-14 items-center gap-2.5 border-2 border-ink bg-paper px-7 text-[16px] font-semibold text-ink no-underline hover:text-ink"
+              >
+                {link.label[lang]}
+              </a>
+            ))}
+          </div>
         )}
       </div>
       <ProjectShot project={project} lang={lang} dict={dict} />

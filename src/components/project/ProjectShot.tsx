@@ -8,7 +8,13 @@ export default function ProjectShot({ project, lang, dict }: { project: Project;
   return (
     <div className="relative flex min-h-[36rem] flex-[2_1_640px] items-center overflow-hidden border-l-2 border-ink bg-sky px-8 pt-12 pb-20">
       <Mountains className="h-36" />
-      <ProjectGallery images={project.images} urlLabel={project.urlLabel} lang={lang} dict={dict} />
+      <ProjectGallery
+        images={project.images}
+        urlLabel={project.urlLabel}
+        photo={project.media === "photo"}
+        lang={lang}
+        dict={dict}
+      />
     </div>
   );
 }

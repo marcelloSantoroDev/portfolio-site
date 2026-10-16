@@ -9,15 +9,18 @@ import { fill, type Dictionary, type Lang } from "@/i18n";
 type ProjectGalleryProps = {
   images: ProjectImage[];
   urlLabel: string | null;
+  /** Quadro de foto: sem barra de endereço, imagem inteira sobre fundo escuro */
+  photo?: boolean;
   lang: Lang;
   dict: Dictionary;
 };
 
 /**
- * Moldura de navegador com os prints do projeto. Com mais de um print, vira um carrossel discreto:
- * trilho com scroll-snap (arrasta no toque), setas e contador na barra de endereço.
+ * Moldura com os prints (ou fotos) do projeto. Com mais de um, vira um carrossel discreto:
+ * trilho com scroll-snap (arrasta no toque), setas e contador.
+ * Prints usam a moldura de navegador; fotos usam um quadro simples, com os controles na legenda.
  */
-export default function ProjectGallery({ images, urlLabel, lang, dict }: ProjectGalleryProps) {
+export default function ProjectGallery({ images, urlLabel, photo = false, lang, dict }: ProjectGalleryProps) {
   const track = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
   const t = dict.project;
@@ -39,40 +42,44 @@ export default function ProjectGallery({ images, urlLabel, lang, dict }: Project
     if (current !== index) setIndex(current);
   };
 
+  const controls = many && (
+    <span className="flex flex-[0_0_auto] items-center gap-2">
+      <button
+        type="button"
+        onClick={() => go(index - 1)}
+        aria-label={t.galleryPrev}
+        className="flex h-7 w-7 cursor-pointer items-center justify-center border-2 border-ink bg-paper leading-none hover:bg-sky"
+      >
+        ‹
+      </button>
+      <span aria-live="polite" className="min-w-[3.25rem] text-center tabular-nums">
+        {fill(t.galleryCount, { n: index + 1, total: images.length })}
+      </span>
+      <button
+        type="button"
+        onClick={() => go(index + 1)}
+        aria-label={t.galleryNext}
+        className="flex h-7 w-7 cursor-pointer items-center justify-center border-2 border-ink bg-paper leading-none hover:bg-sky"
+      >
+        ›
+      </button>
+    </span>
+  );
+
   return (
     <figure
       className="rise3 relative m-0 w-full border-2 border-ink bg-paper shadow-frame"
       aria-roledescription={many ? t.galleryRole : undefined}
       aria-label={many ? t.galleryLabel : undefined}
     >
-      <div className="flex items-center gap-3 border-b-2 border-ink px-4 py-2.5 text-[13px]">
-        <span className="block min-w-0 flex-[1_1_auto] truncate rounded-full border border-ink bg-white px-3 py-1">
-          {urlLabel ?? t.urlPlaceholder}
-        </span>
-        {many && (
-          <span className="flex flex-[0_0_auto] items-center gap-2">
-            <button
-              type="button"
-              onClick={() => go(index - 1)}
-              aria-label={t.galleryPrev}
-              className="flex h-7 w-7 cursor-pointer items-center justify-center border-2 border-ink bg-paper leading-none hover:bg-sky"
-            >
-              ‹
-            </button>
-            <span aria-live="polite" className="min-w-[3.25rem] text-center tabular-nums">
-              {fill(t.galleryCount, { n: index + 1, total: images.length })}
-            </span>
-            <button
-              type="button"
-              onClick={() => go(index + 1)}
-              aria-label={t.galleryNext}
-              className="flex h-7 w-7 cursor-pointer items-center justify-center border-2 border-ink bg-paper leading-none hover:bg-sky"
-            >
-              ›
-            </button>
+      {!photo && (
+        <div className="flex items-center gap-3 border-b-2 border-ink px-4 py-2.5 text-[13px]">
+          <span className="block min-w-0 flex-[1_1_auto] truncate rounded-full border border-ink bg-white px-3 py-1">
+            {urlLabel ?? t.urlPlaceholder}
           </span>
-        )}
-      </div>
+          {controls}
+        </div>
+      )}
 
       {images.length === 0 ? (
         <div className="relative aspect-[16/10] bg-white">
@@ -82,7 +89,7 @@ export default function ProjectGallery({ images, urlLabel, lang, dict }: Project
         <div
           ref={track}
           onScroll={onScroll}
-          className="no-scrollbar flex snap-x snap-mandatory overflow-x-auto bg-white"
+          className={`no-scrollbar flex snap-x snap-mandatory overflow-x-auto ${photo ? "bg-ink" : "bg-white"}`}
         >
           {images.map((image, i) => (
             <div
@@ -97,7 +104,7 @@ export default function ProjectGallery({ images, urlLabel, lang, dict }: Project
                 alt={image.alt[lang]}
                 fill
                 sizes="(max-width: 1040px) 100vw, 66vw"
-                className="object-cover object-top"
+                className={photo ? "object-contain" : "object-cover object-top"}
                 priority={i === 0}
               />
             </div>
@@ -105,8 +112,11 @@ export default function ProjectGallery({ images, urlLabel, lang, dict }: Project
         </div>
       )}
 
-      {caption && (
-        <figcaption className="border-t-2 border-ink px-4 py-2.5 text-[13px]">{caption[lang]}</figcaption>
+      {(caption || (photo && many)) && (
+        <figcaption className="flex items-center gap-3 border-t-2 border-ink px-4 py-2.5 text-[13px]">
+          <span className="min-w-0 flex-[1_1_auto]">{caption?.[lang]}</span>
+          {photo && controls}
+        </figcaption>
       )}
     </figure>
   );
