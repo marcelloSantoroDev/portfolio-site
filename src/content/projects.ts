@@ -78,8 +78,8 @@ export const projects: Project[] = [
         },
       },
     ],
-    url: null,
-    urlLabel: null,
+    url: "https://ligapaulistafutsal.com.br",
+    urlLabel: "ligapaulistafutsal.com.br",
   },
   {
     slug: "cbat-atletismo",
@@ -132,54 +132,54 @@ export const projects: Project[] = [
     urlLabel: "cbat.org.br",
   },
   {
-    slug: "cbr-remo",
+    slug: "cbfa-futebol-americano",
     featured: true,
-    sign: { pt: "Remo", en: "Rowing" },
+    sign: { pt: "Futebol americano", en: "American football" },
     title: {
-      pt: "Plataforma da Confederação Brasileira de Remo",
-      en: "Brazilian Rowing Confederation platform",
+      pt: "Plataforma da Confederação Brasileira de Futebol Americano",
+      en: "Brazilian American Football Confederation platform",
     },
     summary: {
-      pt: "Projeto conduzido de ponta a ponta: resultados, inscrições de barcos, hotsites de federação e um mapa atualizado por pipeline automático.",
-      en: "A project I led end to end: results, boat entries, federation hotsites and a map kept up to date by an automated pipeline.",
+      pt: "Módulo de campeonatos da confederação: classificação por regional, tabela de jogos, página da partida com súmula e vídeo, e perfil de atleta.",
+      en: "The confederation's championship module: standings by region, fixtures, a match page with scoresheet and video, and athlete profiles.",
     },
     description: {
       pt: [
-        "Conduzi o projeto do início à publicação: resultados de eventos, inscrições de barcos, perfis de atletas, seleção, hotsites de federação e o mapa \"onde praticar\".",
-        "O mapa é alimentado por um pipeline: um script geocodifica os locais cadastrados na API, um pipeline no Bitbucket grava o resultado no repositório e a Vercel publica a nova versão sozinha.",
+        "Site da Confederação Brasileira de Futebol Americano, construído sobre a plataforma de confederações da Bigmídia.",
+        "Fui o autor principal do módulo de campeonatos: listagem de partidas, classificação e a página da partida, com súmula, vídeo do YouTube, elenco e árbitros oficiais, além do perfil do atleta com a tabela de resultados. As estatísticas de cada partida são calculadas em hooks tipados, a partir dos scouts dos atletas.",
       ],
       en: [
-        "I led the project from the first commit to launch: event results, boat entries, athlete profiles, the national team, federation hotsites and the \"where to row\" map.",
-        "The map is fed by a pipeline: a script geocodes the venues registered in the API, a Bitbucket pipeline commits the result to the repository, and Vercel publishes the new version on its own.",
+        "The website of the Brazilian American Football Confederation, built on Bigmídia's confederation platform.",
+        "I was the main author of the championship module: the match listing, the standings and the match page, with scoresheet, YouTube video, roster and officials, plus the athlete profile with its results table. Each match's statistics are computed in typed hooks from the athletes' scouts.",
       ],
     },
-    tags: ["Next.js", "TypeScript", "Leaflet", "Bitbucket Pipelines"],
+    tags: ["Next.js", "React", "TypeScript", "TanStack Query"],
     images: [
       {
-        src: "/images/projects/cbr-remo-1.webp",
+        src: "/images/projects/cbfa-futebol-americano-1.webp",
         alt: {
-          pt: "Mapa do Brasil com os locais para praticar remo",
-          en: "Map of Brazil with the places to row",
+          pt: "Classificação por regional e jogos da Superliga de futebol americano 2026",
+          en: "Standings by region and fixtures of the 2026 American football Superliga",
         },
         caption: {
-          pt: "Mapa \"onde praticar\", com os locais geocodificados a partir da API pelo pipeline.",
-          en: "The \"where to row\" map, with venues geocoded from the API by the pipeline.",
+          pt: "Classificação geral por regional e tabela de jogos da Superliga FA 2026.",
+          en: "Overall standings by region and fixtures of the 2026 Superliga FA.",
         },
       },
       {
-        src: "/images/projects/cbr-remo-2.webp",
+        src: "/images/projects/cbfa-futebol-americano-2.webp",
         alt: {
-          pt: "Página da seleção brasileira de remo com os cards dos atletas",
-          en: "Brazilian national rowing team page with athlete cards",
+          pt: "Página de partida com placar, elenco e árbitros oficiais",
+          en: "Match page with score, roster and officials",
         },
         caption: {
-          pt: "Seleção brasileira, com seletor de temporada e categoria.",
-          en: "The national team, with a season and category selector.",
+          pt: "Página da partida: placar, elenco com fotos, árbitros oficiais e total de atletas.",
+          en: "Match page: score, roster with photos, officials and athlete count.",
         },
       },
     ],
-    url: null,
-    urlLabel: null,
+    url: "https://cbfabrasil.com.br",
+    urlLabel: "cbfabrasil.com.br",
   },
   {
     slug: "gerador-de-sites",
