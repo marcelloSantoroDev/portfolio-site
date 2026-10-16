@@ -142,6 +142,8 @@
   cursor: pointer;
   width: 148px;
   height: 148px;
+  left: var(--fig-left);
+  top: var(--fig-top);
 }
 
 .fig:hover,
@@ -284,8 +286,10 @@
   }
 
   .fig {
-    width: 104px;
-    height: 104px;
+    width: 84px;
+    height: 84px;
+    left: var(--fig-left-m);
+    top: var(--fig-top-m);
   }
 
   .layer-far {

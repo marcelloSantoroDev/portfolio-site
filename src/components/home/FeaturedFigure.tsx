@@ -4,9 +4,15 @@ import AvatarFigure from "@/components/AvatarFigure";
 import type { Project } from "@/content/projects";
 import { fill, type Dictionary, type Lang } from "@/i18n";
 
-// Posições dos três bonecos de destaque (em %). Um quarto projeto reaproveita o ciclo.
-const LEFTS = [16, 46, 74];
-const TOPS = [10, 30, 8];
+// Posições dos bonecos de destaque (em %), fora da área da caixa de apresentação.
+// Desktop: zigue-zague em uma faixa; celular (até 760px): duas fileiras acima da caixa, com bonecos de 84px.
+const POSITIONS = [
+  { left: 6, top: 8, mLeft: 2, mTop: 2 },
+  { left: 24, top: 22, mLeft: 31, mTop: 2 },
+  { left: 46, top: 30, mLeft: 67, mTop: 2 },
+  { left: 66, top: 8, mLeft: 16, mTop: 16 },
+  { left: 82, top: 28, mLeft: 50, mTop: 16 },
+];
 
 type FeaturedFigureProps = {
   project: Project;
@@ -17,8 +23,7 @@ type FeaturedFigureProps = {
 
 /** Boneco de destaque: link para o projeto, com placa e transição para a página dele. */
 export default function FeaturedFigure({ project, index, lang, dict }: FeaturedFigureProps) {
-  const left = LEFTS[index % LEFTS.length];
-  const top = TOPS[index % TOPS.length];
+  const { left, top, mLeft, mTop } = POSITIONS[index % POSITIONS.length];
   const title = project.title[lang];
 
   return (
@@ -26,7 +31,7 @@ export default function FeaturedFigure({ project, index, lang, dict }: FeaturedF
       href={`/${lang}/projetos/${project.slug}`}
       aria-label={fill(dict.project.ariaFigure, { title })}
       className="fig absolute z-10 block"
-      style={{ left: `${left}%`, top: `${top}%` }}
+      style={{ "--fig-left": `${left}%`, "--fig-top": `${top}%`, "--fig-left-m": `${mLeft}%`, "--fig-top-m": `${mTop}%` } as CSSProperties}
     >
       <span
         className="lean d1 relative block h-full w-full"

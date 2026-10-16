@@ -28,10 +28,13 @@ export default function WorkSlots({ lang, dict }: { lang: Lang; dict: Dictionary
               onClick={() => setSelected(i)}
               className={`slot flex min-h-[30rem] cursor-pointer flex-col justify-start border-b-2 border-ink p-8 text-left text-ink ${
                 i > 0 ? "border-l-2 max-[760px]:border-l-0" : ""
-              } ${on ? `flex-[3_1_440px] ${SLOT_COLORS[i % SLOT_COLORS.length]}` : "flex-[1_1_220px] bg-paper"}`}
+              } ${on ? `flex-[3_1_440px] ${SLOT_COLORS[i % SLOT_COLORS.length]}` : "flex-[1_1_180px] bg-paper max-[760px]:min-h-0 max-[760px]:basis-full"}`}
             >
               <span className="slotnum font-wide block text-[4.5rem] leading-none">{pad(projectNumber(project))}</span>
-              <span className="mt-4 block font-serif text-[1.7rem] leading-[1.15]">{project.title[lang]}</span>
+              {/* Fechado, o slot é estreito: mostra o nome curto da placa; aberto, o título completo. */}
+              <span className="mt-4 block font-serif text-[1.7rem] leading-[1.15]">
+                {on ? project.title[lang] : project.sign[lang]}
+              </span>
               {on && (
                 <span className="mt-6 flex flex-col gap-4">
                   {project.images[0] ? (
