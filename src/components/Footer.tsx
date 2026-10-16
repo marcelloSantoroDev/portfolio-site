@@ -1,5 +1,6 @@
+import Link from "next/link";
 import { contact } from "@/content/site";
-import type { Dictionary } from "@/i18n";
+import type { Dictionary, Lang } from "@/i18n";
 
 const year = new Date().getFullYear();
 
@@ -9,8 +10,10 @@ const social = [
   { href: contact.substack, label: "Substack" },
 ];
 
+type FooterProps = { lang: Lang; dict: Dictionary };
+
 /** Rodapé da página inicial. */
-export function Footer({ dict }: { dict: Dictionary }) {
+export function Footer({ lang, dict }: FooterProps) {
   return (
     <footer id="contato" className="flex flex-col gap-12 bg-ink px-8 pt-16 pb-8 text-paper">
       <p className="m-0 font-serif text-[clamp(2.8rem,7vw,6.5rem)] leading-none tracking-[-0.02em]">
@@ -26,13 +29,18 @@ export function Footer({ dict }: { dict: Dictionary }) {
           </a>
         ))}
       </div>
-      <p className="m-0 border-t border-paper pt-5 text-[13px]">© {year} Marcello Miranda</p>
+      <div className="flex flex-wrap justify-between gap-4 border-t border-paper pt-5 text-[13px]">
+        <p className="m-0">© {year} Marcello Miranda</p>
+        <Link href={`/${lang}/sobre-este-site`} className="text-paper">
+          {dict.siteInfo.link}
+        </Link>
+      </div>
     </footer>
   );
 }
 
-/** Rodapé compacto da página de projeto. */
-export function CompactFooter() {
+/** Rodapé compacto das páginas internas. */
+export function CompactFooter({ lang, dict }: FooterProps) {
   return (
     <footer className="flex flex-wrap justify-between gap-x-12 gap-y-6 bg-ink p-8 text-[15px] text-paper">
       <a href={`mailto:${contact.email}`} className="text-ochre-light">
@@ -44,6 +52,9 @@ export function CompactFooter() {
             {s.label}
           </a>
         ))}
+        <Link href={`/${lang}/sobre-este-site`} className="text-paper">
+          {dict.siteInfo.link}
+        </Link>
       </div>
       <span>© {year} Marcello Miranda</span>
     </footer>

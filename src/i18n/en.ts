@@ -60,6 +60,62 @@ const en: Dictionary = {
     shotPlaceholder: "[PROJECT SCREENSHOT]",
     urlPlaceholder: "[website-address.com]",
   },
+  siteInfo: {
+    link: "About this site",
+    metaTitle: "About this site — Marcello Miranda",
+    metaDescription: "How this portfolio was built: layout, specification, Claude Code and the technical decisions.",
+    navLabel: "Page navigation",
+    back: "← Back to home",
+    eyebrow: "How this site was made",
+    title: "About this site",
+    intro: [
+      "This portfolio was built with Next.js, TypeScript and Tailwind CSS, with Claude Code leading the implementation. The workflow is the same one I use at work: review before running.",
+      "The centerpiece is the sky on the home page: a crowd of avatars that floats and leans toward the cursor, and three featured figures that lead to the project pages. Click one, and its avatar grows into the avatar on the project page.",
+    ],
+    repo: "Visit this site's repository ↗",
+    stackLabel: "Stack",
+    stack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS 4", "Claude Code"],
+    stackNote: "No animation, i18n or component libraries: it's all CSS and React. The whole site is statically generated.",
+    processTitle: "How it was built",
+    process: [
+      {
+        title: "Layout first",
+        text: "The pages were designed first, in a design editor. Those files and a written specification became the source of truth: colors, measurements, how each interaction behaves, copy in PT and EN, and an acceptance checklist.",
+      },
+      {
+        title: "A Claude Code skill",
+        text: "Layout, specification and project rules were packaged into a skill. It sets what isn't negotiable (no made-up content, no client code, minimal dependencies) and the order of the work.",
+      },
+      {
+        title: "Plan approved before code",
+        text: "Claude Code read the references, checked the installed versions and the Next.js 16 docs, and presented a plan with the file structure, the approach for each interaction and the mismatches it found. Coding started only after approval.",
+      },
+      {
+        title: "Build and verify",
+        text: "After implementation came lint, type checking and the build, plus tests in an automated Chrome: hover, keyboard, touch, reduced motion, 390px width and the page transition. The acceptance checklist was checked item by item.",
+      },
+    ],
+    decisionsTitle: "Technical decisions",
+    decisionsText: "A few details that aren't visible at first glance.",
+    decisions: [
+      {
+        title: "The cursor doesn't re-render React",
+        text: "The sky writes the mouse position to CSS variables once per frame, with requestAnimationFrame. Each figure's offset is computed in CSS, with calc() and clamp().",
+      },
+      {
+        title: "Two animations, no conflict",
+        text: "Floating uses the translate property and the pull toward the cursor uses transform, so both run together.",
+      },
+      {
+        title: "Page transition",
+        text: "React's <ViewTransition> component links the clicked figure to the avatar on the project page. Without browser support, navigation works normally.",
+      },
+      {
+        title: "Accessible",
+        text: "The featured figures are focusable links, with a label and visible focus. On touch screens they're always blue with the sign showing, and with reduced motion nothing moves.",
+      },
+    ],
+  },
 };
 
 export default en;

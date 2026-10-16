@@ -56,7 +56,7 @@ export default async function ProjectPage({ params }: PageProps<"/[lang]/projeto
       </nav>
       <ProjectHero project={project} index={index} lang={lang} dict={dict} />
       <ProjectPager index={index} lang={lang} dict={dict} />
-      <CompactFooter />
+      <CompactFooter lang={lang} dict={dict} />
     </>
   );
 }

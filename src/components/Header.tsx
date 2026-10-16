@@ -28,6 +28,9 @@ export function Header({ lang, dict }: HeaderProps) {
               {l.label}
             </a>
           ))}
+          <Link href={`/${lang}/sobre-este-site`} className="navlink text-[15px]">
+            {dict.siteInfo.link}
+          </Link>
         </div>
         <LangSwitch lang={lang} />
         <CvButton lang={lang} dict={dict} />

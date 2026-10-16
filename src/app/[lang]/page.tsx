@@ -34,7 +34,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
       <Work lang={lang} dict={dict} />
       <Crafts dict={dict} />
       <About dict={dict} />
-      <Footer dict={dict} />
+      <Footer lang={lang} dict={dict} />
     </>
   );
 }

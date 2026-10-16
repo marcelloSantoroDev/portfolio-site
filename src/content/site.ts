@@ -8,6 +8,8 @@ export const contact = {
   substack: "https://depoisdepensar.substack.com/",
 };
 
+export const repoUrl = "https://github.com/marcelloSantoroDev/portfolio-site";
+
 export const cvPath: Record<Lang, string> = {
   pt: "/cv/marcello-miranda-cv-pt.pdf",
   en: "/cv/marcello-miranda-cv-en.pdf",
