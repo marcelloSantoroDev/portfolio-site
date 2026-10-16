@@ -68,7 +68,7 @@ const pt = {
     title: "Sobre este site",
     intro: [
       "Este portfólio foi construído com Next.js, TypeScript e Tailwind CSS, com o Claude Code conduzindo a implementação. O fluxo é o mesmo que uso no trabalho: revisar antes de executar.",
-      "A peça central é o céu da página inicial: uma multidão de avatares que flutua e se inclina na direção do cursor, e três bonecos de destaque que levam às páginas dos projetos. Ao clicar num deles, o avatar cresce e vira o avatar da página do projeto.",
+      "A peça central é o céu da página inicial: uma multidão de avatares que flutua e se inclina na direção do cursor, e três bonecos de destaque que levam às páginas dos projetos. Ao clicar num deles, o avatar cresce e vira o avatar da página do projeto. A cena é uma referência a uma pintura de René Magritte, com seus homens de chapéu-coco suspensos no céu; aqui, eles viraram avatares de perfil vazio.",
     ],
     repo: "Acesse o repositório deste site ↗",
     stackLabel: "Stack",

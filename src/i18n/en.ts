@@ -70,7 +70,7 @@ const en: Dictionary = {
     title: "About this site",
     intro: [
       "This portfolio was built with Next.js, TypeScript and Tailwind CSS, with Claude Code leading the implementation. The workflow is the same one I use at work: review before running.",
-      "The centerpiece is the sky on the home page: a crowd of avatars that floats and leans toward the cursor, and three featured figures that lead to the project pages. Click one, and its avatar grows into the avatar on the project page.",
+      "The centerpiece is the sky on the home page: a crowd of avatars that floats and leans toward the cursor, and three featured figures that lead to the project pages. Click one, and its avatar grows into the avatar on the project page. The scene nods to a René Magritte painting, with its bowler-hatted men suspended in the sky; here, they became blank profile avatars.",
     ],
     repo: "Visit this site's repository ↗",
     stackLabel: "Stack",
