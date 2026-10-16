@@ -58,6 +58,12 @@ const pt = {
     ariaFigure: "Ver projeto: {title}",
     shotPlaceholder: "[PRINT DO PROJETO]",
     urlPlaceholder: "[endereço-do-site.com.br]",
+    galleryLabel: "Prints do projeto",
+    galleryRole: "carrossel",
+    gallerySlide: "print",
+    galleryPrev: "Print anterior",
+    galleryNext: "Próximo print",
+    galleryCount: "{n} de {total}",
   },
   siteInfo: {
     link: "Sobre este site",

@@ -5,6 +5,14 @@
 
 export type Localized = { pt: string; en: string };
 
+export type ProjectImage = {
+  /** Caminho em /public, ex.: "/images/projects/gerador-de-sites-1.webp" */
+  src: string;
+  alt: Localized;
+  /** Legenda abaixo do print; null esconde */
+  caption: Localized | null;
+};
+
 export type Project = {
   slug: string;
   /** Boneco de destaque e slot na página inicial */
@@ -17,10 +25,8 @@ export type Project = {
   /** Parágrafos da página do projeto */
   description: { pt: string[]; en: string[] };
   tags: string[];
-  /** Caminho em /public, ex.: "/images/projects/gerador-de-sites.webp". null mostra o Placeholder. */
-  image: string | null;
-  imageAlt: Localized;
-  caption: Localized | null;
+  /** Prints 16:10 (sugestão: 1600×1000) em /public. O primeiro aparece no slot; vários viram carrossel. Vazio mostra o Placeholder. */
+  images: ProjectImage[];
   /** Link "Visitar o site"; null esconde o botão */
   url: string | null;
   /** Endereço exibido na barra do navegador */
@@ -48,9 +54,30 @@ export const projects: Project[] = [
       ],
     },
     tags: ["Next.js", "TypeScript", "TanStack Query", "Tailwind"],
-    image: null,
-    imageAlt: { pt: "Print do portal da Liga Paulista de Futsal", en: "Screenshot of the Liga Paulista de Futsal portal" },
-    caption: null,
+    images: [
+      {
+        src: "/images/projects/liga-paulista-de-futsal-1.webp",
+        alt: {
+          pt: "Tabela de classificação da Liga Paulista de Futsal 2026",
+          en: "Liga Paulista de Futsal 2026 standings table",
+        },
+        caption: {
+          pt: "Classificação da fase de liga, com o histórico dos últimos jogos de cada equipe.",
+          en: "League-phase standings, with each team's recent results.",
+        },
+      },
+      {
+        src: "/images/projects/liga-paulista-de-futsal-2.webp",
+        alt: {
+          pt: "Página de atleta com números da carreira e histórico por temporada",
+          en: "Athlete page with career numbers and history by season",
+        },
+        caption: {
+          pt: "Perfil do atleta: números da carreira e histórico agrupado por temporada e campeonato.",
+          en: "Athlete profile: career numbers and history grouped by season and championship.",
+        },
+      },
+    ],
     url: null,
     urlLabel: null,
   },
@@ -77,14 +104,32 @@ export const projects: Project[] = [
       ],
     },
     tags: ["Next.js", "React", "TypeScript", "TanStack Query"],
-    image: null,
-    imageAlt: {
-      pt: "Print da plataforma da Confederação Brasileira de Atletismo",
-      en: "Screenshot of the Brazilian Athletics Confederation platform",
-    },
-    caption: null,
-    url: null,
-    urlLabel: null,
+    images: [
+      {
+        src: "/images/projects/cbat-atletismo-1.webp",
+        alt: {
+          pt: "Ranking brasileiro dos 100 metros, com filtros, pódio e tabela",
+          en: "Brazilian 100 metres ranking, with filters, podium and table",
+        },
+        caption: {
+          pt: "Ranking nacional dos 100 metros, com filtros de categoria, prova e vento.",
+          en: "National 100 metres ranking, with category, event and wind filters.",
+        },
+      },
+      {
+        src: "/images/projects/cbat-atletismo-2.webp",
+        alt: {
+          pt: "Resultados da final dos 60 metros, com pódio e tabela de marcas",
+          en: "60 metres final results, with podium and marks table",
+        },
+        caption: {
+          pt: "Resultados de uma final: pódio, fases da prova e tabela com marca e vento.",
+          en: "Results of a final: podium, event rounds and a table with marks and wind.",
+        },
+      },
+    ],
+    url: "https://cbat.org.br",
+    urlLabel: "cbat.org.br",
   },
   {
     slug: "cbr-remo",
@@ -109,12 +154,30 @@ export const projects: Project[] = [
       ],
     },
     tags: ["Next.js", "TypeScript", "Leaflet", "Bitbucket Pipelines"],
-    image: null,
-    imageAlt: {
-      pt: "Print da plataforma da Confederação Brasileira de Remo",
-      en: "Screenshot of the Brazilian Rowing Confederation platform",
-    },
-    caption: null,
+    images: [
+      {
+        src: "/images/projects/cbr-remo-1.webp",
+        alt: {
+          pt: "Mapa do Brasil com os locais para praticar remo",
+          en: "Map of Brazil with the places to row",
+        },
+        caption: {
+          pt: "Mapa \"onde praticar\", com os locais geocodificados a partir da API pelo pipeline.",
+          en: "The \"where to row\" map, with venues geocoded from the API by the pipeline.",
+        },
+      },
+      {
+        src: "/images/projects/cbr-remo-2.webp",
+        alt: {
+          pt: "Página da seleção brasileira de remo com os cards dos atletas",
+          en: "Brazilian national rowing team page with athlete cards",
+        },
+        caption: {
+          pt: "Seleção brasileira, com seletor de temporada e categoria.",
+          en: "The national team, with a season and category selector.",
+        },
+      },
+    ],
     url: null,
     urlLabel: null,
   },
@@ -136,9 +199,7 @@ export const projects: Project[] = [
       ],
     },
     tags: ["Claude Code", "Next.js", "TypeScript", "Tailwind"],
-    image: null,
-    imageAlt: { pt: "Print do gerador de sites", en: "Screenshot of the site generator" },
-    caption: null,
+    images: [],
     url: null,
     urlLabel: null,
   },
@@ -160,12 +221,7 @@ export const projects: Project[] = [
       ],
     },
     tags: ["Next.js", "TypeScript", "REST"],
-    image: null,
-    imageAlt: {
-      pt: "Print do sistema de gestão de competições",
-      en: "Screenshot of the competition management system",
-    },
-    caption: null,
+    images: [],
     url: null,
     urlLabel: null,
   },
@@ -183,9 +239,7 @@ export const projects: Project[] = [
       en: ["[Short description: the problem, what you built and the result.]"],
     },
     tags: [],
-    image: null,
-    imageAlt: { pt: "Print do projeto pessoal", en: "Screenshot of the personal project" },
-    caption: null,
+    images: [],
     url: null,
     urlLabel: null,
   },

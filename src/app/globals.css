@@ -196,6 +196,14 @@
 }
 
 /* ---------- Página de projeto ---------- */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 @keyframes rise {
   from {
     opacity: 0;

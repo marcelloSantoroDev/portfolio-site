@@ -34,14 +34,14 @@ export default function WorkSlots({ lang, dict }: { lang: Lang; dict: Dictionary
               <span className="mt-4 block font-serif text-[1.7rem] leading-[1.15]">{project.title[lang]}</span>
               {on && (
                 <span className="mt-6 flex flex-col gap-4">
-                  {project.image ? (
-                    <span className="relative block aspect-[16/10] border-2 border-ink">
+                  {project.images[0] ? (
+                    <span className="relative block aspect-[16/10] overflow-hidden border-2 border-ink bg-white">
                       <Image
-                        src={project.image}
-                        alt={project.imageAlt[lang]}
+                        src={project.images[0].src}
+                        alt={project.images[0].alt[lang]}
                         fill
                         sizes="(max-width: 760px) 100vw, 50vw"
-                        className="object-cover"
+                        className="object-cover object-top"
                       />
                     </span>
                   ) : (

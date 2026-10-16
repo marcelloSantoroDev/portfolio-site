@@ -60,6 +60,12 @@ const en: Dictionary = {
     ariaFigure: "View project: {title}",
     shotPlaceholder: "[PROJECT SCREENSHOT]",
     urlPlaceholder: "[website-address.com]",
+    galleryLabel: "Project screenshots",
+    galleryRole: "carousel",
+    gallerySlide: "screenshot",
+    galleryPrev: "Previous screenshot",
+    galleryNext: "Next screenshot",
+    galleryCount: "{n} of {total}",
   },
   siteInfo: {
     link: "About this site",
