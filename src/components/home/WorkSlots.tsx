@@ -27,7 +27,7 @@ export default function WorkSlots({ lang, dict }: { lang: Lang; dict: Dictionary
               aria-expanded={on}
               onClick={() => setSelected(i)}
               className={`slot flex min-h-[30rem] cursor-pointer flex-col justify-start border-b-2 border-ink p-8 text-left text-ink ${
-                i > 0 ? "border-l-2" : ""
+                i > 0 ? "border-l-2 max-[760px]:border-l-0" : ""
               } ${on ? `flex-[3_1_440px] ${SLOT_COLORS[i % SLOT_COLORS.length]}` : "flex-[1_1_220px] bg-paper"}`}
             >
               <span className="slotnum font-wide block text-[4.5rem] leading-none">{pad(projectNumber(project))}</span>
@@ -57,8 +57,13 @@ export default function WorkSlots({ lang, dict }: { lang: Lang; dict: Dictionary
           );
         })}
       </div>
-      <div className="flex justify-end px-8 py-5">
-        <Link href={`/${lang}/projetos/${current.slug}`} className="text-[15px] font-semibold">
+      <div className="flex flex-wrap justify-end gap-x-10 gap-y-3 px-8 py-5 text-[15px] font-semibold">
+        {current.url && (
+          <a href={current.url} target="_blank" rel="noopener noreferrer">
+            {dict.project.visit}
+          </a>
+        )}
+        <Link href={`/${lang}/projetos/${current.slug}`}>
           {fill(dict.work.link, { n: pad(projectNumber(current)) })}
         </Link>
       </div>
