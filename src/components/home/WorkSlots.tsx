@@ -4,21 +4,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import Placeholder from "@/components/Placeholder";
-import { projects } from "@/content/projects";
+import { featuredProjects, projectNumber } from "@/content/projects";
 import { fill, pad, type Dictionary, type Lang } from "@/i18n";
 
 // Cor do slot selecionado, pela posição (01 sky, 02 ochre, 03 olive).
 const SLOT_COLORS = ["bg-sky", "bg-ochre", "bg-olive"];
 
-/** Três slots que expandem ao clicar, gerados a partir de projects.ts. */
+/** Slots dos projetos em destaque, que expandem ao clicar. */
 export default function WorkSlots({ lang, dict }: { lang: Lang; dict: Dictionary }) {
   const [selected, setSelected] = useState(0);
-  const current = projects[selected];
+  const current = featuredProjects[selected];
 
   return (
     <>
       <div className="flex flex-wrap border-t-2 border-ink">
-        {projects.map((project, i) => {
+        {featuredProjects.map((project, i) => {
           const on = i === selected;
           return (
             <button
@@ -30,7 +30,7 @@ export default function WorkSlots({ lang, dict }: { lang: Lang; dict: Dictionary
                 i > 0 ? "border-l-2" : ""
               } ${on ? `flex-[3_1_440px] ${SLOT_COLORS[i % SLOT_COLORS.length]}` : "flex-[1_1_220px] bg-paper"}`}
             >
-              <span className="slotnum font-wide block text-[4.5rem] leading-none">{pad(i + 1)}</span>
+              <span className="slotnum font-wide block text-[4.5rem] leading-none">{pad(projectNumber(project))}</span>
               <span className="mt-4 block font-serif text-[1.7rem] leading-[1.15]">{project.title[lang]}</span>
               {on && (
                 <span className="mt-6 flex flex-col gap-4">
@@ -59,7 +59,7 @@ export default function WorkSlots({ lang, dict }: { lang: Lang; dict: Dictionary
       </div>
       <div className="flex justify-end px-8 py-5">
         <Link href={`/${lang}/projetos/${current.slug}`} className="text-[15px] font-semibold">
-          {fill(dict.work.link, { n: pad(selected + 1) })}
+          {fill(dict.work.link, { n: pad(projectNumber(current)) })}
         </Link>
       </div>
     </>

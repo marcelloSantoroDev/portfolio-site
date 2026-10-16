@@ -1,5 +1,6 @@
 import type { Dictionary, Lang } from "@/i18n";
 import WorkSlots from "./WorkSlots";
+import OtherWork from "./OtherWork";
 
 export default function Work({ lang, dict }: { lang: Lang; dict: Dictionary }) {
   return (
@@ -11,6 +12,7 @@ export default function Work({ lang, dict }: { lang: Lang; dict: Dictionary }) {
         <p className="m-0 max-w-[26rem] text-[15px] leading-normal">{dict.work.text}</p>
       </div>
       <WorkSlots lang={lang} dict={dict} />
+      <OtherWork lang={lang} dict={dict} />
     </section>
   );
 }

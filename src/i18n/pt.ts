@@ -29,6 +29,7 @@ const pt = {
     text: "Código de cliente não sai daqui. O que sai é o problema, a solução e o resultado.",
     link: "Ver trabalho {n} →",
     imagePlaceholder: "[IMAGEM DO PROJETO]",
+    otherTitle: "Outros trabalhos",
   },
   crafts: {
     title: "O que eu faço",

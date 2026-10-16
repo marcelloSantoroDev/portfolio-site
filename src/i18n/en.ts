@@ -31,6 +31,7 @@ const en: Dictionary = {
     text: "Client code stays private. What you'll find here is the problem, the solution and the result.",
     link: "View work {n} →",
     imagePlaceholder: "[PROJECT IMAGE]",
+    otherTitle: "Other work",
   },
   crafts: {
     title: "What I do",

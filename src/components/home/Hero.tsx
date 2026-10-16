@@ -1,6 +1,6 @@
 import Mountains from "@/components/Mountains";
 import { contact } from "@/content/site";
-import { projects } from "@/content/projects";
+import { featuredProjects } from "@/content/projects";
 import type { Dictionary, Lang } from "@/i18n";
 import Sky from "./Sky";
 import Crowd from "./Crowd";
@@ -13,7 +13,7 @@ export default function Hero({ lang, dict }: { lang: Lang; dict: Dictionary }) {
       <Sky>
         <div className="absolute inset-0">
           <Crowd />
-          {projects.map((project, i) => (
+          {featuredProjects.map((project, i) => (
             <FeaturedFigure key={project.slug} project={project} index={i} lang={lang} dict={dict} />
           ))}
         </div>
