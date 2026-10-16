@@ -1,0 +1,337 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #17202b;
+  --color-paper: #f4f1ea;
+  --color-sky: #d9e6f0;
+  --color-mountain-far: #bfd0de;
+  --color-mountain-near: #a9bed0;
+  --color-ochre: #b8742e;
+  --color-olive: #8c8a3a;
+  --color-ochre-light: #e9b676;
+  --color-avatar: #c3c9cf;
+  --color-avatar-featured: #aeb6bf;
+  --color-accent: #1a73e8;
+  --color-white: #ffffff;
+
+  --font-sans: var(--font-archivo), "Helvetica Neue", sans-serif;
+  --font-serif: var(--font-fraunces), Georgia, serif;
+
+  --ease-std: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  --shadow-sign: 3px 3px 0 var(--color-ink);
+  --shadow-frame: 8px 8px 0 var(--color-ink);
+  --shadow-visit: 5px 5px 0 var(--color-accent);
+}
+
+/* Na camada base, para que as utilidades do Tailwind (ex.: text-paper) vençam */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+
+  a {
+    color: inherit;
+  }
+
+  a:hover {
+    color: var(--color-ochre);
+  }
+}
+
+/* Texto expandido do nome e dos números */
+.font-wide {
+  font-weight: 800;
+  font-stretch: 125%;
+}
+
+.navlink {
+  text-decoration: none;
+}
+
+.navlink:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* ---------- Slots de trabalhos ---------- */
+.slot {
+  transition:
+    flex 0.5s var(--ease-std),
+    background-color 0.3s;
+}
+
+.slotnum {
+  transition: transform 0.3s;
+}
+
+.slot:hover .slotnum {
+  transform: translateY(-6px);
+}
+
+/* ---------- O que eu faço ---------- */
+.craft {
+  transition:
+    padding-left 0.3s,
+    color 0.3s;
+}
+
+.craft:hover {
+  padding-left: 24px;
+  color: var(--color-ochre);
+}
+
+/* ---------- Céu: atração ao cursor ----------
+   O contêiner recebe --cx, --cy (0..1) e --active (0|1) a cada quadro.
+   Cada boneco tem --left, --top (números em %), --pull e --lim (px). */
+.sky {
+  --cx: 0.5;
+  --cy: 0.5;
+  --active: 0;
+}
+
+.lean {
+  --dx: calc(var(--cx) * 100 - var(--left));
+  --dy: calc(var(--cy) * 100 - var(--top));
+  --tx: clamp(calc(var(--lim) * -1px), calc(var(--dx) * var(--pull) * 3px), calc(var(--lim) * 1px));
+  --ty: clamp(calc(var(--lim) * -0.5px), calc(var(--dy) * var(--pull) * 1.5px), calc(var(--lim) * 0.5px));
+  --rot: clamp(-12deg, calc(var(--dx) * 0.3deg), 12deg);
+  transform: translate(calc(var(--tx) * var(--active)), calc(var(--ty) * var(--active)))
+    rotate(calc(var(--rot) * var(--active)));
+  transition: transform 1.3s var(--ease-std);
+}
+
+.fig .lean {
+  transition-duration: 0.8s;
+}
+
+@keyframes drift {
+  0% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -10px;
+  }
+  100% {
+    translate: 0 0;
+  }
+}
+
+.d1 {
+  animation: drift 7s ease-in-out infinite;
+}
+
+.d2 {
+  animation: drift 9s ease-in-out infinite;
+}
+
+.d3 {
+  animation: drift 12s ease-in-out infinite;
+}
+
+/* ---------- Bonecos de destaque ---------- */
+.fig {
+  text-decoration: none;
+  cursor: pointer;
+  width: 148px;
+  height: 148px;
+}
+
+.fig:hover,
+.fig:focus-visible {
+  z-index: 30 !important;
+}
+
+.fig:focus-visible {
+  outline: none;
+}
+
+.fig:focus-visible .disc {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 4px;
+  border-radius: 999px;
+}
+
+.disc {
+  transition: transform 0.3s var(--ease-std);
+}
+
+.fig:hover .disc,
+.fig:focus-visible .disc {
+  transform: scale(1.08);
+}
+
+.fig:active .disc {
+  transform: scale(0.92);
+}
+
+.fig .ink {
+  transition: fill 0.3s;
+}
+
+.fig:hover .ink,
+.fig:focus-visible .ink {
+  fill: var(--color-accent);
+}
+
+.sign {
+  opacity: 0;
+  transform: translate(-50%, 8px) scale(0.85);
+  transition:
+    opacity 0.25s,
+    transform 0.35s var(--ease-std);
+}
+
+.fig:hover .sign,
+.fig:focus-visible .sign {
+  opacity: 1;
+  transform: translate(-50%, 0) scale(1);
+}
+
+/* ---------- Página de projeto ---------- */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes bob {
+  0% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -8px;
+  }
+  100% {
+    translate: 0 0;
+  }
+}
+
+.rise1 {
+  animation: rise 0.7s var(--ease-std) both;
+}
+
+.rise2 {
+  animation: rise 0.7s 0.12s var(--ease-std) both;
+}
+
+.rise3 {
+  animation: rise 0.8s 0.22s var(--ease-std) both;
+}
+
+.bob {
+  animation: bob 6s ease-in-out infinite;
+}
+
+.visit {
+  transition:
+    box-shadow 0.2s,
+    transform 0.2s;
+}
+
+.visit:hover {
+  color: var(--color-paper);
+  box-shadow: var(--shadow-visit);
+  transform: translate(-2px, -2px);
+}
+
+.pager {
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.pager:hover {
+  background: var(--color-sky);
+  color: var(--color-ink);
+}
+
+/* ---------- Transição entre páginas ---------- */
+::view-transition-group(.morph) {
+  animation-duration: 0.5s;
+  animation-timing-function: var(--ease-std);
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.5s;
+  animation-timing-function: var(--ease-std);
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 760px) {
+  .side {
+    writing-mode: horizontal-tb;
+  }
+
+  .fig {
+    width: 104px;
+    height: 104px;
+  }
+
+  .layer-far {
+    display: none;
+  }
+}
+
+/* ---------- Toque ---------- */
+@media (hover: none), (pointer: coarse) {
+  .fig .ink {
+    fill: var(--color-accent);
+  }
+
+  .fig .sign {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+
+  .sky {
+    --active: 0 !important;
+  }
+}
+
+/* ---------- Movimento reduzido ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  .d1,
+  .d2,
+  .d3,
+  .bob,
+  .rise1,
+  .rise2,
+  .rise3 {
+    animation: none;
+  }
+
+  .sky {
+    --active: 0 !important;
+  }
+
+  .slot,
+  .sign,
+  .disc,
+  .lean,
+  .visit {
+    transition: none;
+  }
+
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}

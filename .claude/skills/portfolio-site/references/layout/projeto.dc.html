@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Projeto — Marcello Miranda</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&amp;family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F4F1EA}
+a{color:#17202B}a:hover{color:#B8742E}
+.navlink{text-decoration:none}
+.navlink:hover{text-decoration:underline;text-underline-offset:4px}
+@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes drift{0%{translate:0 0}50%{translate:0 -8px}100%{translate:0 0}}
+.rise1{animation:rise .7s cubic-bezier(.2,.8,.2,1) both}
+.rise2{animation:rise .7s .12s cubic-bezier(.2,.8,.2,1) both}
+.rise3{animation:rise .8s .22s cubic-bezier(.2,.8,.2,1) both}
+.bob{animation:drift 6s ease-in-out infinite}
+.visit{transition:box-shadow .2s,transform .2s}
+.visit:hover{color:#F4F1EA;box-shadow:5px 5px 0 #1A73E8;transform:translate(-2px,-2px)}
+.pager{text-decoration:none;transition:background-color .3s}
+.pager:hover{background:#D9E6F0;color:#17202B}
+@media (prefers-reduced-motion:reduce){.rise1,.rise2,.rise3,.bob{animation:none}.visit{transition:none}}
+</style>
+</helmet>
+<div style="font-family: 'Archivo', 'Helvetica Neue', sans-serif; color: #17202B; background: #F4F1EA; min-height: 100vh">
+
+<header style="display: flex; flex-wrap: wrap; align-items: stretch; border-bottom: 2px solid #17202B">
+<a href="Main.dc.html" style="display: flex; align-items: center; padding: 1rem 2rem; flex: 1 1 320px; text-decoration: none; font-weight: 800; font-stretch: 125%; font-size: 1.9rem; letter-spacing: -0.02em">Marcello Miranda</a>
+<div style="display: flex; align-items: stretch; border-left: 2px solid #17202B">
+<button type="button" onClick="{{ setPt }}" aria-pressed="{{ isPt }}" style="{{ ptStyle }}">PT</button>
+<button type="button" onClick="{{ setEn }}" aria-pressed="{{ isEn }}" style="{{ enStyle }}">EN</button>
+</div>
+<a href="#" style="display: flex; align-items: center; padding: 0 2rem; min-height: 56px; background: #17202B; color: #F4F1EA; text-decoration: none; font-size: 15px; font-weight: 600">Baixar currículo</a>
+</header>
+
+<nav aria-label="Navegação do projeto" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; padding: 1rem 2rem; border-bottom: 2px solid #17202B; font-size: 15px">
+<a class="navlink" href="Main.dc.html">← Todos os trabalhos</a>
+<span>Trabalho 01 de 03</span>
+</nav>
+
+<main style="display: flex; flex-wrap: wrap; border-bottom: 2px solid #17202B">
+<div style="flex: 1 1 400px; padding: 3rem 2rem; display: flex; flex-direction: column; gap: 1.75rem; box-sizing: border-box">
+<div class="rise1" style="display: flex; align-items: center; gap: 1.25rem">
+<span class="bob" style="display: block; width: 96px; height: 96px; flex: 0 0 auto">
+<svg viewBox="0 0 100 100" aria-hidden="true" style="display: block; width: 100%; height: 100%"><circle cx="50" cy="50" r="48" fill="#FFFFFF" stroke="#17202B" stroke-width="2"></circle><circle cx="50" cy="25" r="10" fill="#1A73E8"></circle><path d="M38 38 Q50 34 62 38 Q66 40 66 46 L68 64 Q68 67 64 67 L62 67 L61 86 Q61 89 58 89 L54 89 Q52 89 52 86 L51 70 L49 70 L48 86 Q48 89 46 89 L42 89 Q39 89 39 86 L38 67 L36 67 Q32 67 32 64 L34 46 Q34 40 38 38 Z" fill="#1A73E8"></path></svg>
+</span>
+<span style="font-weight: 800; font-stretch: 125%; font-size: 4rem; line-height: 1">01</span>
+</div>
+<h1 class="rise2" style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 400; font-size: clamp(2.6rem, 4.6vw, 4.6rem); line-height: 1.02; letter-spacing: -0.02em">Gerador de sites com Claude Code</h1>
+<div class="rise2" style="display: flex; flex-direction: column; gap: 1rem; max-width: 34rem">
+<p style="margin: 0; font-size: 18px; line-height: 1.6">Skill de Claude Code que monta a estrutura de um site novo a partir de 16 seções padronizadas. Um fluxo de perguntas define o conteúdo, e nada é executado antes de uma revisão.</p>
+<p style="margin: 0; font-size: 18px; line-height: 1.6">[Segundo parágrafo opcional: o resultado, como o tempo de setup que caiu.]</p>
+</div>
+<p class="rise2" style="margin: 0; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase">Claude Code · Next.js · TypeScript · Tailwind</p>
+<a class="visit rise3" href="#" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 0.6rem; min-height: 56px; padding: 0 1.75rem; background: #17202B; color: #F4F1EA; text-decoration: none; font-size: 16px; font-weight: 600; border: 2px solid #17202B">Visitar o site ↗</a>
+</div>
+<div style="flex: 2 1 640px; background: #D9E6F0; border-left: 2px solid #17202B; position: relative; overflow: hidden; padding: 3rem 2rem 5rem 2rem; box-sizing: border-box; display: flex; align-items: center; min-height: 36rem">
+<svg viewBox="0 0 1000 200" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 9rem">
+<path d="M0 120 L90 80 L170 105 L260 52 L360 98 L450 70 L560 112 L660 60 L760 96 L860 74 L1000 110 L1000 200 L0 200 Z" fill="#BFD0DE"></path>
+<path d="M0 150 L120 128 L240 146 L380 120 L520 150 L640 132 L780 152 L900 136 L1000 148 L1000 200 L0 200 Z" fill="#A9BED0"></path>
+</svg>
+<figure class="rise3" style="position: relative; margin: 0; width: 100%; background: #F4F1EA; border: 2px solid #17202B; box-shadow: 8px 8px 0 #17202B">
+<div style="display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem 1rem; border-bottom: 2px solid #17202B; font-size: 13px">
+<span style="display: block; flex: 1 1 auto; padding: 0.3rem 0.75rem; background: #FFFFFF; border: 1px solid #17202B; border-radius: 999px">[endereço-do-site.com.br]</span>
+</div>
+<div style="display: flex; align-items: center; justify-content: center; aspect-ratio: 16 / 10; background: #FFFFFF; font-size: 13px">[PRINT DO PROJETO]</div>
+<figcaption style="padding: 0.6rem 1rem; border-top: 2px solid #17202B; font-size: 13px">[Legenda curta do print]</figcaption>
+</figure>
+</div>
+</main>
+
+<nav aria-label="Outros trabalhos" style="display: flex; flex-wrap: wrap; border-bottom: 2px solid #17202B">
+<a class="pager" href="#" style="flex: 1 1 360px; display: flex; flex-direction: column; gap: 0.5rem; padding: 2.5rem 2rem; box-sizing: border-box">
+<span style="font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase">← Anterior · 03</span>
+<span style="font-family: 'Fraunces', Georgia, serif; font-size: clamp(1.6rem, 2.6vw, 2.4rem); line-height: 1.1">[Projeto pessoal]</span>
+</a>
+<a class="pager" href="#" style="flex: 1 1 360px; display: flex; flex-direction: column; align-items: flex-end; text-align: right; gap: 0.5rem; padding: 2.5rem 2rem; box-sizing: border-box; border-left: 2px solid #17202B">
+<span style="font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase">Próximo · 02 →</span>
+<span style="font-family: 'Fraunces', Georgia, serif; font-size: clamp(1.6rem, 2.6vw, 2.4rem); line-height: 1.1">Sistema de gestão de competições</span>
+</a>
+</nav>
+
+<footer style="background: #17202B; color: #F4F1EA; padding: 2rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1.5rem 3rem; font-size: 15px">
+<a href="mailto:marcelloaltermundi@gmail.com" style="color: #E9B676">marcelloaltermundi@gmail.com</a>
+<div style="display: flex; flex-wrap: wrap; gap: 1.5rem 2.5rem">
+<a href="https://www.linkedin.com/in/marcello-santoro-dev/" style="color: #F4F1EA">LinkedIn</a>
+<a href="https://github.com/marcelloSantoroDev" style="color: #F4F1EA">GitHub</a>
+<a href="https://depoisdepensar.substack.com/" style="color: #F4F1EA">Substack</a>
+</div>
+<span>© 2026 Marcello Miranda</span>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1240}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { lang: 'pt' };
+  }
+  renderVals() {
+    const tab = (on) => 'min-width: 56px; min-height: 56px; border: none; border-right: 2px solid #17202B; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer; background: ' + (on ? '#17202B' : '#F4F1EA') + '; color: ' + (on ? '#F4F1EA' : '#17202B');
+    return {
+      isPt: this.state.lang === 'pt', isEn: this.state.lang === 'en',
+      ptStyle: tab(this.state.lang === 'pt'), enStyle: tab(this.state.lang === 'en'),
+      setPt: () => this.setState({ lang: 'pt' }),
+      setEn: () => this.setState({ lang: 'en' })
+    };
+  }
+}
+</script>
+</body>
+</html>

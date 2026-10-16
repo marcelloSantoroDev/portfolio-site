@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Marcello Miranda — Portfólio</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&amp;family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F4F1EA}
+a{color:#17202B}a:hover{color:#B8742E}
+.side{writing-mode:vertical-rl}
+.navlink{text-decoration:none}
+.navlink:hover{text-decoration:underline;text-underline-offset:4px}
+.slot{cursor:pointer;transition:flex .5s cubic-bezier(.2,.8,.2,1),background-color .3s}
+.slot:hover .slotnum{transform:translateY(-6px)}
+.slotnum{transition:transform .3s}
+.craft{transition:padding-left .3s,color .3s}
+.craft:hover{padding-left:24px;color:#B8742E}
+html{scroll-behavior:smooth}
+.fig{text-decoration:none;cursor:pointer}
+.fig:hover,.fig:focus-visible{z-index:30 !important}
+.fig .sign{opacity:0;transform:translate(-50%,8px) scale(.85);transition:opacity .25s,transform .35s cubic-bezier(.2,.8,.2,1)}
+.fig:hover .sign,.fig:focus-visible .sign{opacity:1;transform:translate(-50%,0) scale(1)}
+.fig:hover .disc,.fig:focus-visible .disc{transform:scale(1.08)}
+.disc{transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.fig .ink{transition:fill .3s}
+.fig:hover .ink,.fig:focus-visible .ink{fill:#1A73E8}
+.fig:active .disc{transform:scale(.92)}
+@keyframes drift{0%{translate:0 0}50%{translate:0 -10px}100%{translate:0 0}}
+.d1{animation:drift 7s ease-in-out infinite}
+.d2{animation:drift 9s ease-in-out infinite}
+.d3{animation:drift 12s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.d1,.d2,.d3{animation:none}.slot,.sign,.disc{transition:none}}
+@media (max-width:760px){.side{writing-mode:horizontal-tb}}
+</style>
+</helmet>
+<div style="font-family: 'Archivo', 'Helvetica Neue', sans-serif; color: #17202B; background: #F4F1EA; min-height: 100vh">
+
+<header style="border-bottom: 2px solid #17202B">
+<div style="padding: 1.5rem 2rem 0.5rem 2rem; overflow: hidden">
+<h1 style="margin: 0; font-weight: 800; font-stretch: 125%; font-size: clamp(2.6rem, 9.6vw, 9.4rem); line-height: 0.92; letter-spacing: -0.03em; white-space: nowrap">Marcello Miranda</h1>
+</div>
+<nav aria-label="Principal" style="display: flex; flex-wrap: wrap; align-items: stretch; border-top: 2px solid #17202B; margin-top: 1rem">
+<div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; padding: 1rem 2rem; flex: 1 1 420px">
+<a class="navlink" href="#trabalhos" style="font-size: 15px">Trabalhos</a>
+<a class="navlink" href="#oficios" style="font-size: 15px">O que eu faço</a>
+<a class="navlink" href="#sobre" style="font-size: 15px">Sobre</a>
+<a class="navlink" href="#contato" style="font-size: 15px">Contato</a>
+</div>
+<div style="display: flex; align-items: stretch; border-left: 2px solid #17202B">
+<button type="button" onClick="{{ setPt }}" aria-pressed="{{ isPt }}" style="{{ ptStyle }}">PT</button>
+<button type="button" onClick="{{ setEn }}" aria-pressed="{{ isEn }}" style="{{ enStyle }}">EN</button>
+</div>
+<a href="#" style="display: flex; align-items: center; padding: 0 2rem; min-height: 56px; background: #17202B; color: #F4F1EA; text-decoration: none; font-size: 15px; font-weight: 600">Baixar currículo</a>
+</nav>
+</header>
+
+<section aria-label="Apresentação" style="display: flex; flex-wrap: wrap; border-bottom: 2px solid #17202B">
+<div onMouseMove="{{ onMove }}" onMouseLeave="{{ onLeave }}" style="flex: 1 1 640px; position: relative; overflow: hidden; min-height: 40rem; background: {{ sky }}">
+<div style="position: absolute; inset: 0">
+<sc-for list="{{ far }}" as="f" hint-placeholder-count="8">
+<span aria-hidden="true" style="{{ f.wrap }}"><span class="{{ f.cls }}" style="{{ f.inner }}"><svg viewBox="0 0 100 100" aria-hidden="true" style="display: block; width: 100%; height: 100%"><circle cx="50" cy="50" r="49" fill="#FFFFFF"></circle><circle cx="50" cy="25" r="10" fill="#C3C9CF"></circle><path d="M38 38 Q50 34 62 38 Q66 40 66 46 L68 64 Q68 67 64 67 L62 67 L61 86 Q61 89 58 89 L54 89 Q52 89 52 86 L51 70 L49 70 L48 86 Q48 89 46 89 L42 89 Q39 89 39 86 L38 67 L36 67 Q32 67 32 64 L34 46 Q34 40 38 38 Z" fill="#C3C9CF"></path></svg></span></span>
+</sc-for>
+<sc-for list="{{ crowd }}" as="f" hint-placeholder-count="12">
+<span aria-hidden="true" style="{{ f.wrap }}"><span class="{{ f.cls }}" style="{{ f.inner }}"><svg viewBox="0 0 100 100" aria-hidden="true" style="display: block; width: 100%; height: 100%"><circle cx="50" cy="50" r="49" fill="#FFFFFF"></circle><circle cx="50" cy="25" r="10" fill="#C3C9CF"></circle><path d="M38 38 Q50 34 62 38 Q66 40 66 46 L68 64 Q68 67 64 67 L62 67 L61 86 Q61 89 58 89 L54 89 Q52 89 52 86 L51 70 L49 70 L48 86 Q48 89 46 89 L42 89 Q39 89 39 86 L38 67 L36 67 Q32 67 32 64 L34 46 Q34 40 38 38 Z" fill="#C3C9CF"></path></svg></span></span>
+</sc-for>
+<sc-for list="{{ figs }}" as="f" hint-placeholder-count="3">
+<a class="fig" href="Projeto.dc.html" onClick="{{ f.go }}" aria-label="{{ f.label }}" style="{{ f.wrap }}"><span class="{{ f.cls }}" style="{{ f.inner }}"><span class="disc" style="display: block; width: 100%; height: 100%"><svg viewBox="0 0 100 100" aria-hidden="true" style="display: block; width: 100%; height: 100%"><circle cx="50" cy="50" r="48" fill="#FFFFFF" stroke="#17202B" stroke-width="2"></circle><circle cx="50" cy="25" r="10" class="ink" fill="#AEB6BF"></circle><path d="M38 38 Q50 34 62 38 Q66 40 66 46 L68 64 Q68 67 64 67 L62 67 L61 86 Q61 89 58 89 L54 89 Q52 89 52 86 L51 70 L49 70 L48 86 Q48 89 46 89 L42 89 Q39 89 39 86 L38 67 L36 67 Q32 67 32 64 L34 46 Q34 40 38 38 Z" class="ink" fill="#AEB6BF"></path></svg></span><span class="sign" style="{{ f.sign }}">{{ f.name }}</span></span></a>
+</sc-for>
+</div>
+<svg viewBox="0 0 1000 200" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 11rem">
+<path d="M0 120 L90 80 L170 105 L260 52 L360 98 L450 70 L560 112 L660 60 L760 96 L860 74 L1000 110 L1000 200 L0 200 Z" fill="#BFD0DE"></path>
+<path d="M0 150 L120 128 L240 146 L380 120 L520 150 L640 132 L780 152 L900 136 L1000 148 L1000 200 L0 200 Z" fill="#A9BED0"></path>
+</svg>
+<div style="position: absolute; left: 2rem; bottom: 2rem; right: 2rem; max-width: 36rem; background: #F4F1EA; border: 2px solid #17202B; padding: 1.75rem; display: flex; flex-direction: column; gap: 1rem">
+<p style="margin: 0; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600">Desenvolvedor full stack · São Paulo</p>
+<h2 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 400; font-size: clamp(2.2rem, 3.8vw, 3.6rem); line-height: 1.02; letter-spacing: -0.02em">Um desenvolvedor, <i>muitos ofícios.</i></h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.55">Construo sistemas completos com Next.js, TypeScript e Claude Code, da conversa com o cliente ao deploy. Hoje, na Bigmídia, desenvolvo plataformas web para confederações esportivas.</p>
+</div>
+</div>
+<aside class="side" aria-label="Contato rápido" style="flex: 0 0 auto; background: #B8742E; border-left: 2px solid #17202B; padding: 2rem 1.25rem; display: flex; gap: 3rem; font-size: 14px; line-height: 1.6; color: #17202B">
+<a href="mailto:marcelloaltermundi@gmail.com">marcelloaltermundi@gmail.com</a>
+<span>linkedin.com/in/marcello-santoro-dev</span>
+<span>São Paulo, Brasil</span>
+</aside>
+</section>
+
+<section id="trabalhos" aria-label="Trabalhos selecionados" style="border-bottom: 2px solid #17202B">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 3rem 2rem 2rem 2rem">
+<h2 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 400; font-size: clamp(2.2rem, 4vw, 3.6rem); letter-spacing: -0.02em">Trabalhos selecionados</h2>
+<p style="margin: 0; font-size: 15px; max-width: 26rem; line-height: 1.5">Código de cliente não sai daqui. O que sai é o problema, a solução e o resultado.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; border-top: 2px solid #17202B">
+
+<button type="button" class="slot" onClick="{{ pick1 }}" aria-expanded="{{ sel1 }}" style="{{ slot1Style }}">
+<span class="slotnum" style="display: block; font-weight: 800; font-stretch: 125%; font-size: 4.5rem; line-height: 1">01</span>
+<span style="display: block; font-family: 'Fraunces', Georgia, serif; font-size: 1.7rem; line-height: 1.15; margin-top: 1rem">Gerador de sites com Claude Code</span>
+<sc-if value="{{ sel1 }}" hint-placeholder-val="{{ true }}">
+<span style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem">
+<span style="display: flex; align-items: center; justify-content: center; aspect-ratio: 16 / 10; border: 2px dashed currentColor; font-size: 12px">[IMAGEM DO PROJETO]</span>
+<span style="display: block; font-size: 16px; line-height: 1.55">Skill que monta um site novo a partir de 16 seções padronizadas, com revisão antes de cada execução.</span>
+<span style="display: block; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase">Claude Code · Next.js · Tailwind</span>
+</span>
+</sc-if>
+</button>
+
+<button type="button" class="slot" onClick="{{ pick2 }}" aria-expanded="{{ sel2 }}" style="{{ slot2Style }}">
+<span class="slotnum" style="display: block; font-weight: 800; font-stretch: 125%; font-size: 4.5rem; line-height: 1">02</span>
+<span style="display: block; font-family: 'Fraunces', Georgia, serif; font-size: 1.7rem; line-height: 1.15; margin-top: 1rem">Sistema de gestão de competições</span>
+<sc-if value="{{ sel2 }}" hint-placeholder-val="{{ false }}">
+<span style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem">
+<span style="display: flex; align-items: center; justify-content: center; aspect-ratio: 16 / 10; border: 2px dashed currentColor; font-size: 12px">[IMAGEM DO PROJETO]</span>
+<span style="display: block; font-size: 16px; line-height: 1.55">Plataforma web usada em competição oficial, com suporte presencial aos usuários no primeiro teste real.</span>
+<span style="display: block; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase">Next.js · TypeScript · REST</span>
+</span>
+</sc-if>
+</button>
+
+<button type="button" class="slot" onClick="{{ pick3 }}" aria-expanded="{{ sel3 }}" style="{{ slot3Style }}">
+<span class="slotnum" style="display: block; font-weight: 800; font-stretch: 125%; font-size: 4.5rem; line-height: 1">03</span>
+<span style="display: block; font-family: 'Fraunces', Georgia, serif; font-size: 1.7rem; line-height: 1.15; margin-top: 1rem">[PROJETO PESSOAL]</span>
+<sc-if value="{{ sel3 }}" hint-placeholder-val="{{ false }}">
+<span style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem">
+<span style="display: flex; align-items: center; justify-content: center; aspect-ratio: 16 / 10; border: 2px dashed currentColor; font-size: 12px">[IMAGEM DO PROJETO]</span>
+<span style="display: block; font-size: 16px; line-height: 1.55">[Descrição curta: o problema, o que você construiu e o resultado.]</span>
+<span style="display: block; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase">[TECNOLOGIAS]</span>
+</span>
+</sc-if>
+</button>
+
+</div>
+<div style="display: flex; justify-content: flex-end; padding: 1.25rem 2rem; border-top: 2px solid #17202B">
+<a href="Projeto.dc.html" style="font-size: 15px; font-weight: 600">Ver trabalho {{ selNum }} →</a>
+</div>
+</section>
+
+<section id="oficios" aria-label="O que eu faço" style="display: flex; flex-wrap: wrap; border-bottom: 2px solid #17202B">
+<div style="flex: 1 1 360px; background: #17202B; color: #F4F1EA; padding: 3rem 2rem; display: flex; flex-direction: column; justify-content: space-between; gap: 2rem; box-sizing: border-box">
+<h2 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 400; font-size: 2.2rem; line-height: 1.1">O que eu faço</h2>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; max-width: 22rem">Do primeiro rascunho da interface ao banco de dados, passando pela conversa com quem vai usar o sistema.</p>
+</div>
+<ul style="flex: 2 1 520px; list-style: none; margin: 0; padding: 2.5rem 2rem; display: flex; flex-direction: column; gap: 0.25rem; font-family: 'Fraunces', Georgia, serif; font-size: clamp(2.2rem, 4.6vw, 4.2rem); line-height: 1.1">
+<li class="craft">Interfaces</li>
+<li class="craft">APIs e dados</li>
+<li class="craft">Desenvolvimento com IA</li>
+<li class="craft">Requisitos e clientes</li>
+<li class="craft"><i>Palavras e música</i></li>
+</ul>
+</section>
+
+<section id="sobre" aria-label="Sobre" style="display: flex; flex-wrap: wrap; border-bottom: 2px solid #17202B">
+<div style="flex: 2 1 520px; background: #D9E6F0; padding: 3.5rem 2rem; display: flex; flex-direction: column; gap: 1.5rem; box-sizing: border-box">
+<h2 style="margin: 0; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700">Sobre</h2>
+<p style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-size: clamp(1.6rem, 2.6vw, 2.3rem); line-height: 1.25; max-width: 44rem">Antes do código, fui compositor, produtor musical, tradutor e redator. Hoje escuto o cliente, transformo a necessidade em especificação e conduzo a implementação com Claude Code.</p>
+<a href="https://depoisdepensar.substack.com/" style="font-size: 15px; font-weight: 600">Também escrevo no Substack →</a>
+</div>
+<div style="flex: 1 1 320px; background: #8C8A3A; border-left: 2px solid #17202B; min-height: 26rem; display: flex; align-items: center; justify-content: center; position: relative">
+<div style="width: 62%; aspect-ratio: 3 / 4; background: #F4F1EA; border: 2px solid #17202B; display: flex; align-items: center; justify-content: center; font-size: 12px">[SUA FOTO]</div>
+</div>
+</section>
+
+<footer id="contato" style="background: #17202B; color: #F4F1EA; padding: 4rem 2rem 2rem 2rem; display: flex; flex-direction: column; gap: 3rem">
+<p style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-size: clamp(2.8rem, 7vw, 6.5rem); line-height: 1; letter-spacing: -0.02em">Vamos conversar.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 2rem 3rem; font-size: 16px">
+<a href="mailto:marcelloaltermundi@gmail.com" style="color: #E9B676">marcelloaltermundi@gmail.com</a>
+<a href="https://www.linkedin.com/in/marcello-santoro-dev/" style="color: #F4F1EA">LinkedIn</a>
+<a href="https://github.com/marcelloSantoroDev" style="color: #F4F1EA">GitHub</a>
+<a href="https://depoisdepensar.substack.com/" style="color: #F4F1EA">Substack</a>
+</div>
+<p style="margin: 0; font-size: 13px; border-top: 1px solid #F4F1EA; padding-top: 1.25rem">© 2026 Marcello Miranda</p>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"sky":{"editor":"color","default":"#D9E6F0","options":["#D9E6F0","#E8E2D4","#CFDCE3","#F0D9C8"]},"$preview":{"width":1440,"height":2600}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { slot: 1, lang: 'pt', cx: null, cy: null };
+  }
+  renderVals() {
+    const s = this.state;
+    const names = ['Gerador de sites', 'Sistema de competições', 'Projeto pessoal'];
+    const cur = s.cx === null || s.cx === undefined ? null : { x: s.cx * 100, y: s.cy * 100 };
+    const place = (count, depth, rowTops, shift, opts) => Array.from({ length: count }, (_, i) => {
+      const o = opts || {};
+      const row = i % rowTops.length;
+      const left = o.lefts ? o.lefts[i] : (i * (100 / count) + (row % 2 ? shift : 0)) % 88 + 3;
+      const top = o.tops ? o.tops[i] : rowTops[row];
+      const size = o.size || (depth === 1 ? 104 : depth === 2 ? 74 : 50);
+      const pull = o.pull || (depth === 1 ? 0.3 : depth === 2 ? 0.2 : 0.1);
+      let tx = 0, ty = 0, rot = 0;
+      if (cur) {
+        const dx = cur.x - left, dy = cur.y - top;
+        const lim = o.pull ? 140 : 40;
+        tx = Math.max(-lim, Math.min(lim, dx * pull * 3));
+        ty = Math.max(-lim / 2, Math.min(lim / 2, dy * pull * 1.5));
+        rot = Math.max(-12, Math.min(12, dx * 0.3));
+      }
+      return {
+        i, depth, cls: 'd' + depth,
+        wrap: 'position: absolute; display: block; left: ' + left + '%; top: ' + top + '%; width: ' + size + 'px; height: ' + size + 'px; z-index: ' + (o.z || (4 - depth)) + '; opacity: ' + (depth === 3 ? 0.6 : 1),
+        inner: 'position: relative; display: block; width: 100%; height: 100%; transform: translate(' + tx.toFixed(1) + 'px, ' + ty.toFixed(1) + 'px) rotate(' + rot.toFixed(1) + 'deg); transition: transform ' + (o.pull ? '0.8s' : '1.3s') + ' cubic-bezier(.2,.8,.2,1)'
+      };
+    });
+    const far = place(8, 3, [4, 26, 48], 6);
+    const crowd = [].concat(place(7, 2, [12, 36, 58], 7), place(5, 1, [26, 6, 46], 9));
+    const figs = place(3, 1, [0], 0, { lefts: [16, 46, 74], tops: [10, 30, 8], size: 148, pull: 1.1, z: 10 }).map((f, j) => {
+      const n = j + 1;
+      return Object.assign(f, {
+        name: names[j],
+        label: 'Ver projeto: ' + names[j],
+        go: () => this.setState({ slot: n }),
+        sign: 'position: absolute; left: 50%; top: 60%; display: block; padding: 6px 12px; background: #F4F1EA; color: #17202B; border: 2px solid #17202B; border-radius: 3px; box-shadow: 3px 3px 0 #17202B; font-size: 14px; font-weight: 700; white-space: nowrap'
+      });
+    });
+    const colors = { 1: ['#D9E6F0', '#17202B'], 2: ['#B8742E', '#17202B'], 3: ['#8C8A3A', '#17202B'] };
+    const slotStyle = (n) => {
+      const on = s.slot === n;
+      const flex = on ? '3 1 440px' : '1 1 220px';
+      const border = n > 1 ? 'border-left: 2px solid #17202B;' : '';
+      return 'flex: ' + flex + '; min-height: 30rem; box-sizing: border-box; padding: 2rem; text-align: left; font: inherit; color: ' + colors[n][1] + '; background: ' + (on ? colors[n][0] : '#F4F1EA') + '; border: none; ' + border + ' border-bottom: 2px solid #17202B; display: flex; flex-direction: column; justify-content: flex-start';
+    };
+    const tab = (on) => 'min-width: 56px; min-height: 56px; border: none; border-right: 2px solid #17202B; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer; background: ' + (on ? '#17202B' : '#F4F1EA') + '; color: ' + (on ? '#F4F1EA' : '#17202B');
+    return {
+      sky: this.props.sky ?? '#D9E6F0',
+      far, crowd, figs,
+      onMove: (e) => {
+        const r = e.currentTarget.getBoundingClientRect();
+        this.setState({ cx: (e.clientX - r.left) / r.width, cy: (e.clientY - r.top) / r.height });
+      },
+      onLeave: () => this.setState({ cx: null, cy: null }),
+      sel1: s.slot === 1, sel2: s.slot === 2, sel3: s.slot === 3,
+      selNum: '0' + s.slot,
+      slot1Style: slotStyle(1), slot2Style: slotStyle(2), slot3Style: slotStyle(3),
+      pick1: () => this.setState({ slot: 1 }),
+      pick2: () => this.setState({ slot: 2 }),
+      pick3: () => this.setState({ slot: 3 }),
+      isPt: s.lang === 'pt', isEn: s.lang === 'en',
+      ptStyle: tab(s.lang === 'pt'), enStyle: tab(s.lang === 'en'),
+      setPt: () => this.setState({ lang: 'pt' }),
+      setEn: () => this.setState({ lang: 'en' })
+    };
+  }
+}
+</script>
+</body>
+</html>
