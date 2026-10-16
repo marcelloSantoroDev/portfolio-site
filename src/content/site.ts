@@ -16,4 +16,4 @@ export const cvPath: Record<Lang, string> = {
 };
 
 /** Caminho em /public; null mostra o Placeholder. */
-export const photo: string | null = null; // "/images/me.jpg"
+export const photo: string | null = "/images/me.jpg";

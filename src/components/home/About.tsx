@@ -15,7 +15,7 @@ export default function About({ dict }: { dict: Dictionary }) {
           {dict.about.substack}
         </a>
       </div>
-      <div className="relative flex min-h-[26rem] flex-[1_1_320px] items-center justify-center border-l-2 border-ink bg-olive">
+      <div className="relative flex min-h-[26rem] flex-[1_1_320px] items-center justify-center border-l-2 border-ink bg-olive py-12">
         <div className="relative aspect-[3/4] w-[62%] border-2 border-ink bg-paper">
           {photo ? (
             <Image src={photo} alt={dict.about.photoAlt} fill sizes="(max-width: 760px) 62vw, 20vw" className="object-cover" />
