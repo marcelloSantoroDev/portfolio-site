@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ViewTransition, type CSSProperties } from "react";
-import AvatarFigure from "@/components/AvatarFigure";
+import AvatarFigure, { figColor } from "@/components/AvatarFigure";
 import type { Project } from "@/content/projects";
 import { fill, type Dictionary, type Lang } from "@/i18n";
 
@@ -31,7 +31,7 @@ export default function FeaturedFigure({ project, index, lang, dict }: FeaturedF
       href={`/${lang}/projetos/${project.slug}`}
       aria-label={fill(dict.project.ariaFigure, { title })}
       className="fig absolute z-10 block"
-      style={{ "--fig-left": `${left}%`, "--fig-top": `${top}%`, "--fig-left-m": `${mLeft}%`, "--fig-top-m": `${mTop}%` } as CSSProperties}
+      style={{ "--fig-left": `${left}%`, "--fig-top": `${top}%`, "--fig-left-m": `${mLeft}%`, "--fig-top-m": `${mTop}%`, "--fig-color": figColor(index) } as CSSProperties}
     >
       <span
         className="lean d1 relative block h-full w-full"
@@ -39,7 +39,7 @@ export default function FeaturedFigure({ project, index, lang, dict }: FeaturedF
       >
         <ViewTransition name={`avatar-${project.slug}`} share="morph" default="none">
           <span className="disc block h-full w-full">
-            <AvatarFigure color="var(--color-avatar-featured)" outlined inkClassName="ink" />
+            <AvatarFigure color="var(--color-avatar-featured)" outlined hat="hover" />
           </span>
         </ViewTransition>
         <span className="sign absolute top-[60%] left-1/2 block rounded-[3px] border-2 border-ink bg-paper px-3 py-1.5 text-[14px] font-bold whitespace-nowrap text-ink shadow-sign">

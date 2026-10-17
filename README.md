@@ -32,7 +32,7 @@ O projeto foi construído com [Claude Code](https://claude.com/claude-code), seg
 - **Acessibilidade.**
   - Os bonecos de destaque são links focáveis, com `aria-label` e foco visível.
   - Os slots são `<button aria-expanded>`.
-  - Em telas de toque, os destaques ficam sempre azuis e com a placa visível.
+  - Em telas de toque, os destaques ficam sempre coloridos, de chapéu e com a placa visível.
   - Com `prefers-reduced-motion`, nada se move.
 
 ## Estrutura

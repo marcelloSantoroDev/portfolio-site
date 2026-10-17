@@ -12,6 +12,8 @@
   --color-avatar: #c3c9cf;
   --color-avatar-featured: #aeb6bf;
   --color-accent: #1a73e8;
+  --color-fig-red: #ea4335;
+  --color-fig-yellow: #fbbc05;
   --color-white: #ffffff;
 
   --font-sans: var(--font-archivo), "Helvetica Neue", sans-serif;
@@ -174,13 +176,32 @@
   transform: scale(0.92);
 }
 
+/* Cor do boneco ativo: --fig-color vem do índice (vermelho e amarelo alternados) */
 .fig .ink {
   transition: fill 0.3s;
 }
 
 .fig:hover .ink,
 .fig:focus-visible .ink {
-  fill: var(--color-accent);
+  fill: var(--fig-color);
+}
+
+/* Chapéu-coco: cai sobre a cabeça no hover e no foco, com um leve quique */
+.hat {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  opacity: 0;
+  transform: translateY(-9px) rotate(-8deg);
+  transition:
+    opacity 0.2s,
+    transform 0.45s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+
+.hat-on,
+.fig:hover .hat,
+.fig:focus-visible .hat {
+  opacity: 1;
+  transform: none;
 }
 
 .sign {
@@ -300,7 +321,12 @@
 /* ---------- Toque ---------- */
 @media (hover: none), (pointer: coarse) {
   .fig .ink {
-    fill: var(--color-accent);
+    fill: var(--fig-color);
+  }
+
+  .fig .hat {
+    opacity: 1;
+    transform: none;
   }
 
   .fig .sign {
@@ -336,6 +362,7 @@
   .slot,
   .sign,
   .disc,
+  .hat,
   .lean,
   .visit {
     transition: none;

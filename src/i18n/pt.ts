@@ -75,7 +75,7 @@ const pt = {
     title: "Sobre este site",
     intro: [
       "Este portfólio foi construído com Next.js, TypeScript e Tailwind CSS, com o Claude Code conduzindo a implementação. O fluxo é o mesmo que uso no trabalho: revisar antes de executar.",
-      "A peça central é o céu da página inicial: uma multidão de avatares que flutua e se inclina na direção do cursor, e três bonecos de destaque que levam às páginas dos projetos. Ao clicar num deles, o avatar cresce e vira o avatar da página do projeto. A cena é uma referência a uma pintura de René Magritte, com seus homens de chapéu-coco suspensos no céu; aqui, eles viraram avatares de perfil vazio.",
+      "A peça central é o céu da página inicial: uma multidão de avatares que flutua e se inclina na direção do cursor, e três bonecos de destaque que levam às páginas dos projetos. Ao clicar num deles, o avatar cresce e vira o avatar da página do projeto. A cena é uma referência a uma pintura de René Magritte, com seus homens de chapéu-coco suspensos no céu; aqui, eles viraram avatares de perfil vazio, e os de destaque põem o chapéu quando o cursor passa por eles.",
     ],
     repo: "Acesse o repositório deste site ↗",
     stackLabel: "Stack",
@@ -117,7 +117,7 @@ const pt = {
       },
       {
         title: "Acessível",
-        text: "Os bonecos de destaque são links focáveis, com rótulo e foco visível. Em telas de toque, eles ficam sempre azuis com a placa visível, e com movimento reduzido nada se move.",
+        text: "Os bonecos de destaque são links focáveis, com rótulo e foco visível. Em telas de toque, eles ficam sempre coloridos, de chapéu e com a placa visível, e com movimento reduzido nada se move.",
       },
     ],
   },

@@ -1,5 +1,5 @@
 import { ViewTransition } from "react";
-import AvatarFigure from "@/components/AvatarFigure";
+import AvatarFigure, { figColor } from "@/components/AvatarFigure";
 import { projectTags, type Project } from "@/content/projects";
 import { pad, type Dictionary, type Lang } from "@/i18n";
 import ProjectShot from "./ProjectShot";
@@ -17,7 +17,7 @@ export default function ProjectHero({ project, index, lang, dict }: ProjectHeroP
           <span className="bob block h-24 w-24 flex-[0_0_auto]">
             <ViewTransition name={`avatar-${project.slug}`} share="morph" default="none">
               <span className="block h-full w-full">
-                <AvatarFigure color="var(--color-accent)" outlined />
+                <AvatarFigure color={figColor(index)} outlined hat="on" />
               </span>
             </ViewTransition>
           </span>

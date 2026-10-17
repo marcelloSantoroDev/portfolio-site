@@ -77,7 +77,7 @@ const en: Dictionary = {
     title: "About this site",
     intro: [
       "This portfolio was built with Next.js, TypeScript and Tailwind CSS, with Claude Code leading the implementation. The workflow is the same one I use at work: review before running.",
-      "The centerpiece is the sky on the home page: a crowd of avatars that floats and leans toward the cursor, and three featured figures that lead to the project pages. Click one, and its avatar grows into the avatar on the project page. The scene nods to a René Magritte painting, with its bowler-hatted men suspended in the sky; here, they became blank profile avatars.",
+      "The centerpiece is the sky on the home page: a crowd of avatars that floats and leans toward the cursor, and three featured figures that lead to the project pages. Click one, and its avatar grows into the avatar on the project page. The scene nods to a René Magritte painting, with its bowler-hatted men suspended in the sky; here, they became blank profile avatars, and the featured ones put on the hat when the cursor passes over them.",
     ],
     repo: "Visit this site's repository ↗",
     stackLabel: "Stack",
@@ -119,7 +119,7 @@ const en: Dictionary = {
       },
       {
         title: "Accessible",
-        text: "The featured figures are focusable links, with a label and visible focus. On touch screens they're always blue with the sign showing, and with reduced motion nothing moves.",
+        text: "The featured figures are focusable links, with a label and visible focus. On touch screens they're always colored and wear the hat, with the sign showing, and with reduced motion nothing moves.",
       },
     ],
   },
