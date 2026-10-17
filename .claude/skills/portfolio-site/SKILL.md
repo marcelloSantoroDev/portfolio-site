@@ -32,7 +32,7 @@ São componentes de um editor de design, não HTML para copiar. A estrutura:
 
 ## Restrições que não se negociam
 
-- **Nada de Magritte no site.** A pasta pode conter uma imagem de inspiração (uma pintura ou a capa do LinkedIn do usuário). Ela é só contexto: não use a imagem, não a recrie e não desenhe figuras de homens de chapéu-coco. Os bonecos do site são o avatar genérico de perfil vazio, exatamente como no layout.
+- **Magritte só como referência discreta.** A pasta pode conter uma imagem de inspiração (uma pintura ou a capa do LinkedIn do usuário). Ela é só contexto: não use a imagem nem a recrie. Os bonecos do site são o avatar genérico de perfil vazio, exatamente como no layout. A única exceção, decidida pelo dono do projeto, é o chapéu-coco que os bonecos de destaque põem no hover e o avatar da página de projeto usa sempre (ver `spec.md`, seção 6). Não acrescente outros elementos da pintura.
 - **Código de cliente não entra.** Os projetos são apresentados por print, título, descrição e link. Não invente detalhes técnicos, números ou resultados que não estejam em `content/projects.ts`.
 - **Não invente conteúdo.** Use os textos do layout e do `spec.md`. Onde faltar conteúdo, mantenha o espaço reservado visível e liste-o no relatório final.
 - **Dependências mínimas.** Next.js, React, TypeScript e Tailwind dão conta de tudo. Não adicione biblioteca de animação, de i18n ou de componentes. Se achar que alguma é indispensável, justifique no plano e espere aprovação.

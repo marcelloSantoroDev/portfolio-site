@@ -118,7 +118,9 @@ Defina como tokens do Tailwind (no CSS global, conforme a versão instalada) e u
 | ochre-light | `#E9B676` | e-mail sobre fundo escuro |
 | avatar | `#C3C9CF` | bonecos da multidão |
 | avatar-featured | `#AEB6BF` | bonecos de destaque em repouso |
-| accent | `#1A73E8` | bonecos de destaque ativos, sombra do botão de visitar |
+| accent | `#1A73E8` | sombra do botão de visitar |
+| fig-red | `#EA4335` | bonecos de destaque ativos em posição ímpar (01, 03, 05) |
+| fig-yellow | `#FBBC05` | bonecos de destaque ativos em posição par (02, 04) |
 | white | `#FFFFFF` | disco dos avatares |
 
 - Fontes: Archivo variável (eixos `wdth` 62–125 e `wght`) para interface e para o nome gigante (`font-weight: 800`, `font-stretch: 125%`); Fraunces variável (eixo `opsz`, com itálico) para títulos e listas. Carregue as duas via `next/font/google` com os eixos necessários e exponha como variáveis CSS. Fallbacks: `'Helvetica Neue', sans-serif` e `Georgia, serif`.
@@ -188,7 +190,7 @@ Flutuação contínua: keyframe `drift` (`translate: 0 0 → 0 -10px → 0 0`), 
 
 - Um para cada projeto, na ordem de `projects.ts`. São `<Link>` para `/[lang]/projetos/[slug]`, com `aria-label` "Ver projeto: {título}" / "View project: {title}".
 - Em repouso: corpo `avatar-featured`.
-- Em hover ou foco: corpo muda para `accent` em 0,3s, o disco cresce para `scale(1.08)` e a placa aparece. Ao pressionar, `scale(.92)`.
+- Em hover ou foco: cabeça e corpo mudam para a cor do boneco em 0,3s (vermelho e amarelo do Google alternados pela ordem do projeto: `fig-red`, `fig-yellow`, `fig-red`…), um chapéu-coco ink cai sobre a cabeça (opacidade e `translateY(-9px) rotate(-8deg)` → posição final, 0,45s com leve quique), o disco cresce para `scale(1.08)` e a placa aparece. Ao pressionar, `scale(.92)`.
 - Placa: centralizada, no topo a 60% do boneco, paper, borda ink de 2px, raio 3px, sombra `3px 3px 0 ink`, Archivo 14px peso 700, sem quebra. Aparece com opacidade 0→1 e transform `translate(-50%, 8px) scale(.85)` → `translate(-50%, 0) scale(1)`, em 0,25s/0,35s.
 - Só esses três mudam de cor. A multidão nunca reage ao hover.
 
@@ -198,7 +200,7 @@ Reproduza `projeto.dc.html`:
 
 - Cabeçalho compacto: nome em Archivo 800 expandido (1,9rem) linkando para a página inicial, seletor PT/EN e "Baixar currículo".
 - Barra: "← Todos os trabalhos" (volta para `/[lang]#trabalhos`) e "Trabalho 0N de 03".
-- Coluna de texto: avatar azul de 96px (contorno ink, corpo `accent`) com flutuação de 6s, número grande, título em Fraunces, parágrafos da descrição, tags em caixa alta e botão "Visitar o site ↗" (ink, 56px de altura, `target="_blank" rel="noopener noreferrer"`; some se `url` for null). Hover do botão: sombra `5px 5px 0 accent` e `translate(-2px,-2px)`.
+- Coluna de texto: avatar de 96px (contorno ink, corpo na cor do boneco de destaque correspondente, com o chapéu-coco sempre visível) com flutuação de 6s, número grande, título em Fraunces, parágrafos da descrição, tags em caixa alta e botão "Visitar o site ↗" (ink, 56px de altura, `target="_blank" rel="noopener noreferrer"`; some se `url` for null). Hover do botão: sombra `5px 5px 0 accent` e `translate(-2px,-2px)`.
 - Coluna do print: fundo sky com as montanhas, moldura com barra de endereço (`urlLabel`), imagem 16:10 com `next/image` (ou Placeholder) e legenda (some se `caption` for null).
 - Entrada: elementos sobem 28px com fade em sequência (0s, 0,12s, 0,22s; 0,7–0,8s).
 - Paginador: anterior e próximo em ciclo (do 01, o anterior é o 03), com hover sky.
@@ -218,7 +220,7 @@ Ao clicar num boneco de destaque, o boneco deve parecer crescer e virar o avatar
 
 - Todos os blocos usam `flex-wrap` com os `flex-basis` do layout, então empilham naturalmente no celular. Teste em 390px de largura, sem rolagem horizontal.
 - Abaixo de 760px: faixa lateral horizontal; bonecos de destaque com 104px, e a multidão de fundo some, deixando só meio e frente.
-- Em `(hover: none)` ou `(pointer: coarse)`: os três bonecos de destaque ficam azuis com a placa sempre visível; a atração ao cursor fica desligada; o toque navega direto.
+- Em `(hover: none)` ou `(pointer: coarse)`: os bonecos de destaque ficam sempre coloridos, de chapéu e com a placa visível; a atração ao cursor fica desligada; o toque navega direto.
 - Em `prefers-reduced-motion: reduce`: sem `drift`, sem atração, sem transições de página, sem rolagem suave e sem animação de entrada. As placas e as cores continuam funcionando.
 
 ## 10. Acessibilidade e metadados
@@ -279,13 +281,13 @@ Enquanto não existirem, use o componente `Placeholder` (caixa com borda traceja
 - [ ] `/` redireciona para `/pt`; `/pt` e `/en` mostram todos os textos traduzidos; idioma inválido dá 404.
 - [ ] A aparência confere com os layouts: cores, fontes, bordas de 2px, tamanhos e espaçamentos.
 - [ ] A multidão flutua e se inclina na direção do cursor; os três de destaque seguem bem mais e mais rápido.
-- [ ] Só os três de destaque reagem ao hover: ficam azuis `#1A73E8`, crescem e mostram a placa com o nome do projeto.
+- [ ] Só os de destaque reagem ao hover: mudam para vermelho `#EA4335` ou amarelo `#FBBC05` (alternados), põem o chapéu-coco, crescem e mostram a placa com o nome do projeto.
 - [ ] O clique num boneco leva à página do projeto com a transição do avatar (ou navegação normal sem suporte).
 - [ ] Mover o mouse no céu não provoca nova renderização do React.
 - [ ] Slots expandem e recolhem com animação; o link inferior leva ao projeto selecionado.
 - [ ] Página de projeto: print, título, descrição, botão de visitar, anterior/próximo em ciclo, 404 para slug inválido.
-- [ ] Em 390px de largura, sem rolagem horizontal; no toque, os destaques ficam azuis com placa visível.
+- [ ] Em 390px de largura, sem rolagem horizontal; no toque, os destaques ficam coloridos, de chapéu e com placa visível.
 - [ ] Com movimento reduzido, nada se move e tudo continua utilizável.
 - [ ] Bonecos de destaque acessíveis por teclado, com foco visível.
 - [ ] Trocar, remover ou acrescentar um projeto exige editar só `src/content/projects.ts`.
-- [ ] Nenhuma imagem ou figura de Magritte no site.
+- [ ] Nenhuma imagem ou figura de Magritte no site além do chapéu-coco dos bonecos de destaque.
