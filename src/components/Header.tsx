@@ -16,8 +16,9 @@ export function Header({ lang, dict }: HeaderProps) {
 
   return (
     <header className="border-b-2 border-ink">
-      <div className="overflow-hidden px-8 pt-6 pb-2">
-        <h1 className="font-wide m-0 text-[clamp(2.6rem,9.6vw,9.4rem)] leading-[0.92] tracking-[-0.03em] whitespace-nowrap">
+      {/* O nome ocupa ~10,2× o tamanho da fonte: dividir a largura disponível (100cqw) por 10,3 faz ele caber sempre, até o teto de 9,4rem */}
+      <div className="@container overflow-hidden px-8 pt-6 pb-2">
+        <h1 className="font-wide m-0 text-[min(9.4rem,calc(100cqw/10.3))] leading-[0.92] tracking-[-0.03em] whitespace-nowrap">
           Marcello Miranda
         </h1>
       </div>
